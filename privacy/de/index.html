@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>alright — Datenschutzerklärung</title>
+<meta name="description" content="Datenschutzerklärung für die alright-App.">
+<style>
+  :root {
+    color-scheme: light dark;
+    --bg: #faf9f6;
+    --ink: #16140f;
+    --muted: #5c584e;
+    --rule: rgba(22, 20, 15, 0.12);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #121109;
+      --ink: #f6f4ee;
+      --muted: #b3ae9e;
+      --rule: rgba(246, 244, 238, 0.14);
+    }
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  main {
+    max-width: 620px;
+    margin: 0 auto;
+    padding: 4rem 1.5rem 5rem;
+  }
+  .top-row {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    margin: 0 0 3rem;
+  }
+  .wordmark {
+    font-size: 1rem;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+    margin: 0;
+  }
+  .wordmark a { text-decoration: none; color: inherit; }
+  .wordmark .slash {
+    font-weight: 300;
+    color: var(--muted);
+    padding: 0 0.05em;
+  }
+  .lang-switch { font-size: 0.85rem; }
+  .lang-switch a {
+    color: var(--muted);
+    text-decoration: none;
+    border-bottom: 1px solid var(--rule);
+  }
+  .lang-switch a:hover { color: var(--ink); border-color: currentColor; }
+  h1 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin: 0 0 0.4rem;
+  }
+  .meta {
+    color: var(--muted);
+    font-size: 0.9rem;
+    margin: 0 0 2.5rem;
+  }
+  section { margin-bottom: 1.8rem; }
+  h2 {
+    font-size: 1.02rem;
+    font-weight: 600;
+    margin: 0 0 0.6rem;
+  }
+  p, li { margin: 0 0 0.8rem; }
+  ul { margin: 0 0 0.8rem; padding-left: 1.2rem; }
+  a { color: var(--ink); text-decoration-color: var(--rule); text-underline-offset: 2px; }
+  a:hover { text-decoration-color: currentColor; }
+  footer {
+    color: var(--muted);
+    font-size: 0.85rem;
+    margin-top: 3rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--rule);
+  }
+</style>
+</head>
+<body>
+<main>
+  <div class="top-row">
+    <p class="wordmark"><a href="../../">al<span class="slash">/</span>right</a></p>
+    <p class="lang-switch"><a href="../">English</a></p>
+  </div>
+
+  <h1>Datenschutzerklärung</h1>
+  <p class="meta">Stand: 2. August 2026</p>
+
+  <section>
+    <h2>Kurzfassung</h2>
+    <p>alright erhebt keine Daten. Es gibt kein Konto, keine Analyse-Tools, keine Werbung, kein Tracking durch Dritte und keinen eigenen Server. Alles, was die App speichert, bleibt auf deinem Gerät.</p>
+  </section>
+
+  <section>
+    <h2>Was alright speichert, und wo</h2>
+    <ul>
+      <li><strong>Deine Einstellungen</strong> (gewählte Uhrzeit für Mitteilungen, Sprache, visueller Stil, Erscheinungsbild) werden lokal auf deinem Gerät über Apples Standard-App-Speicher (UserDefaults) abgelegt.</li>
+      <li><strong>Die täglichen Affirmationen</strong> sind fest in der App enthalten — nichts wird von einem Server geladen.</li>
+      <li><strong>Mitteilungen</strong> werden lokal auf deinem Gerät über Apples Benachrichtigungssystem (UNUserNotificationCenter) geplant. Wir sehen nicht, ob oder wann eine Mitteilung zugestellt oder geöffnet wurde.</li>
+    </ul>
+    <p>Falls dein Gerät ein iCloud- oder Computer-Backup anlegt, läuft das vollständig über Apple und dessen eigene Datenschutzbedingungen — alright selbst stößt das nicht an und hat darauf keinen Einfluss.</p>
+  </section>
+
+  <section>
+    <h2>Dritte</h2>
+    <p>Keine. alright enthält keine Analyse- oder Werbe-SDKs und macht keine Netzwerkzugriffe. Wir geben keine Daten weiter, weil wir keine erheben.</p>
+  </section>
+
+  <section>
+    <h2>Speicherdauer und Löschung</h2>
+    <p>Deine Einstellungen bleiben auf deinem Gerät, bis du sie änderst oder die App löschst — dabei wird alles entfernt, was alright gespeichert hat. Es gibt kein Konto zu kündigen und keine serverseitige Kopie, deren Löschung man beantragen müsste, weil es keine gibt.</p>
+  </section>
+
+  <section>
+    <h2>Mitteilungs-Erlaubnis</h2>
+    <p>Du kannst Mitteilungen jederzeit an- oder ausschalten: iOS-Einstellungen → Mitteilungen → alright.</p>
+  </section>
+
+  <section>
+    <h2>Kinder</h2>
+    <p>alright erhebt von niemandem personenbezogene Daten, auch nicht von Kindern.</p>
+  </section>
+
+  <section>
+    <h2>Änderungen dieser Erklärung</h2>
+    <p>Bei Änderungen aktualisieren wir das Datum oben und veröffentlichen die neue Fassung an derselben Adresse.</p>
+  </section>
+
+  <section>
+    <h2>Kontakt</h2>
+    <p>Lisanne Visser (Entwicklerin von alright) — <a href="mailto:mail@lisannevisser.com">mail@lisannevisser.com</a></p>
+  </section>
+
+  <footer>
+    <p><a href="../../">← alright</a> · <a href="../">English</a></p>
+  </footer>
+</main>
+</body>
+</html>
