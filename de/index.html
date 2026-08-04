@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>alright — Support</title>
-<meta name="description" content="Support und Kontakt für die alright-App.">
+<title>alright — ein Satz am Tag</title>
+<meta name="description" content="alright zeigt dir einen Satz am Tag: eine leise Mitteilung, kein Account, kein Tracking.">
 <meta name="robots" content="noindex, nofollow">
 <link rel="icon" type="image/svg+xml" href="../favicon.svg">
 <link rel="icon" type="image/png" sizes="32x32" href="../favicon.png">
@@ -17,6 +17,7 @@
     --ink: #16140f;
     --muted: #5c584e;
     --rule: rgba(22, 20, 15, 0.12);
+    --card-shadow: 0 24px 60px rgba(22, 20, 15, 0.10);
   }
   @media (prefers-color-scheme: dark) {
     :root {
@@ -24,6 +25,7 @@
       --ink: #f6f4ee;
       --muted: #b3ae9e;
       --rule: rgba(246, 244, 238, 0.14);
+      --card-shadow: 0 24px 60px rgba(0, 0, 0, 0.45);
     }
   }
   * { box-sizing: border-box; }
@@ -36,7 +38,7 @@
     -webkit-font-smoothing: antialiased;
   }
   main {
-    max-width: 620px;
+    max-width: 900px;
     margin: 0 auto;
     padding: 4rem 1.5rem 5rem;
   }
@@ -44,51 +46,110 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin: 0 0 3rem;
+    margin: 0 0 4rem;
   }
-  .wordmark {
-    margin: 0;
-    line-height: 0;
-  }
+  .wordmark { margin: 0; line-height: 0; }
   .wordmark a { display: block; }
-  .wordmark .logo {
-    display: block;
-    height: 20px;
-    width: auto;
-  }
-  .lang-switch {
-    font-size: 0.85rem;
-    margin: 0;
-  }
+  .wordmark .logo { display: block; height: 20px; width: auto; }
+  .lang-switch { font-size: 0.85rem; margin: 0; }
   .lang-switch a {
     color: var(--muted);
     text-decoration: none;
     border-bottom: 1px solid var(--rule);
   }
   .lang-switch a:hover { color: var(--ink); border-color: currentColor; }
+
+  .hero {
+    display: grid;
+    gap: 3rem;
+    align-items: center;
+  }
+  @media (min-width: 720px) {
+    .hero { grid-template-columns: 1fr 300px; gap: 4rem; }
+  }
   h1 {
-    font-size: 1.5rem;
+    font-size: clamp(2.1rem, 6vw, 3.1rem);
+    line-height: 1.1;
+    letter-spacing: -0.02em;
     font-weight: 600;
-    margin: 0 0 0.5rem;
+    margin: 0 0 1rem;
   }
-  .tagline {
+  .lede {
+    font-size: 1.1rem;
     color: var(--muted);
-    margin: 0 0 2.5rem;
+    margin: 0 0 2rem;
+    max-width: 34ch;
   }
-  section { margin-bottom: 2.5rem; }
-  h2 {
+  .hero-shot { justify-self: center; }
+  @media (min-width: 720px) {
+    .hero-shot { justify-self: end; }
+    .hero-shot img { max-width: 300px; }
+  }
+  .hero-shot img {
+    display: block;
+    width: 100%;
+    max-width: 230px;
+    height: auto;
+    border-radius: 22px;
+    box-shadow: var(--card-shadow);
+  }
+
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    background: var(--ink);
+    color: var(--bg);
+    border-radius: 10px;
+    padding: 0.55rem 1rem 0.6rem;
+    line-height: 1.1;
+  }
+  .badge-apple { width: 26px; height: 26px; flex: none; }
+  .badge-text { display: block; }
+  .badge-small {
+    display: block;
+    font-size: 0.62rem;
+    letter-spacing: 0.02em;
+    opacity: 0.9;
+  }
+  .badge-large {
+    display: block;
+    font-size: 1.2rem;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+  }
+  .badge-note {
+    font-size: 0.85rem;
+    color: var(--muted);
+    margin: 0.75rem 0 0;
+  }
+
+  .points {
+    display: grid;
+    gap: 2rem;
+    margin: 5rem 0 0;
+    padding-top: 3rem;
+    border-top: 1px solid var(--rule);
+  }
+  @media (min-width: 720px) { .points { grid-template-columns: repeat(3, 1fr); gap: 2.5rem; } }
+  .points h2 {
     font-size: 0.85rem;
     text-transform: uppercase;
     letter-spacing: 0.06em;
     color: var(--muted);
-    margin: 0 0 0.9rem;
     font-weight: 600;
+    margin: 0 0 0.6rem;
   }
-  p { margin: 0 0 0.9rem; }
+  .points p { margin: 0; }
+
+  .closing {
+    margin: 5rem 0 0;
+    font-size: 1.35rem;
+    letter-spacing: -0.01em;
+  }
+
   a { color: var(--ink); text-decoration-color: var(--rule); text-underline-offset: 2px; }
   a:hover { text-decoration-color: currentColor; }
-  .faq dt { font-weight: 600; margin-top: 1.1rem; }
-  .faq dd { margin: 0.25rem 0 0; color: var(--muted); }
   footer {
     color: var(--muted);
     font-size: 0.85rem;
@@ -101,7 +162,7 @@
 <body>
 <main>
   <div class="top-row">
-    <p class="wordmark"><a href="../">
+    <p class="wordmark">
       <svg class="logo" viewBox="0 0 765 205" fill="currentColor" role="img" aria-label="alright" xmlns="http://www.w3.org/2000/svg">
       <path d="M50.82 160.6C41.2867 160.6 32.6333 158.18 24.86 153.34C17.2333 148.5 11.1467 141.973 6.6 133.76C2.2 125.4 0 116.087 0 105.82C0 95.4068 2.2 86.0934 6.6 77.8801C11.1467 69.5201 17.2333 62.9201 24.86 58.0801C32.6333 53.0934 41.2867 50.6001 50.82 50.6001C58.8867 50.6001 66 52.3601 72.16 55.8801C78.4667 59.2534 83.4533 63.9468 87.12 69.9601C90.7867 75.9734 92.62 82.7934 92.62 90.4201V120.78C92.62 128.407 90.7867 135.227 87.12 141.24C83.6 147.253 78.6867 152.02 72.38 155.54C66.0733 158.913 58.8867 160.6 50.82 160.6ZM54.78 137.72C63.7267 137.72 70.9133 134.713 76.34 128.7C81.9133 122.687 84.7 114.987 84.7 105.6C84.7 99.2934 83.4533 93.7201 80.96 88.8801C78.4667 84.0401 74.9467 80.3001 70.4 77.6601C66 74.8734 60.7933 73.4801 54.78 73.4801C48.9133 73.4801 43.7067 74.8734 39.16 77.6601C34.76 80.3001 31.24 84.0401 28.6 88.8801C26.1067 93.7201 24.86 99.2934 24.86 105.6C24.86 111.907 26.1067 117.48 28.6 122.32C31.24 127.16 34.76 130.973 39.16 133.76C43.7067 136.4 48.9133 137.72 54.78 137.72ZM83.16 158.4V130.02L87.34 104.28L83.16 78.7601V52.8001H107.36V158.4H83.16Z"/>
       <path d="M140.817 158.4V9.34601e-05H165.017V79.2001V158.4H140.817Z"/>
@@ -112,37 +173,47 @@
       <path d="M715.11 158.4V8.8001H739.31V158.4H715.11ZM689.81 74.8001V52.8001H764.61V74.8001H689.81Z"/>
       <path d="M189.835 150.109L244.252 1.34982L266.98 9.66362L239.771 84.0432L212.562 158.423L189.835 150.109Z"/>
       </svg>
-    </a></p>
+    </p>
     <p class="lang-switch"><a href="../">English</a></p>
   </div>
 
-  <h1>Support</h1>
-  <p class="tagline">alright zeigt dir jeden Tag eine Affirmation — eine stille Mitteilung, sonst nichts.</p>
-
-  <section>
-    <h2>Kontakt</h2>
-    <p>Fragen, Probleme, Feedback: <a href="mailto:alrightapp@icloud.com">alrightapp@icloud.com</a>. Die Mail landet direkt bei der Person, die die App baut.</p>
+  <section class="hero">
+    <div class="hero-copy">
+      <h1>Ein Satz am Tag.</h1>
+      <p class="lede">Eine leise Mitteilung zur selbst gewählten Zeit. Kein Account, kein Tracking, kein Feed zum Scrollen.</p>
+      <p class="badge">
+        <svg class="badge-apple" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><path d="M11.182.008C11.148-.03 9.923.023 8.857 1.18c-1.066 1.156-.902 2.482-.878 2.516.024.034 1.52.087 2.475-1.258.955-1.345.762-2.391.728-2.43zm3.314 11.733c-.048-.096-2.325-1.234-2.113-3.422.212-2.189 1.675-2.789 1.698-2.854.023-.065-.597-.79-1.254-1.157a3.692 3.692 0 0 0-1.563-.434c-.108-.003-.483-.095-1.254.116-.508.139-1.653.589-1.968.607-.316.018-1.256-.522-2.267-.665-.647-.125-1.333.131-1.824.328-.49.196-1.422.754-2.074 2.237-.652 1.482-.311 3.83-.067 4.56.244.729.625 1.924 1.273 2.796.576.984 1.34 1.667 1.659 1.899.319.232 1.219.386 1.843.067.502-.308 1.408-.485 1.766-.472.357.013 1.061.154 1.782.539.571.197 1.111.115 1.652-.105.541-.221 1.324-1.059 2.238-2.758.347-.79.505-1.217.473-1.282z"/></svg>
+        <span class="badge-text">
+          <span class="badge-small">Laden im</span>
+          <span class="badge-large">App Store</span>
+        </span>
+      </p>
+      <p class="badge-note">Bald im App Store.</p>
+    </div>
+    <div class="hero-shot">
+      <img src="../assets/daily-card.png" width="1200" height="1680" alt="Die App alright mit dem Satz des Tages: You have survived every hard day so far.">
+    </div>
   </section>
 
-  <section>
-    <h2>Häufige Fragen</h2>
-    <dl class="faq">
-      <dt>Wie schalte ich Mitteilungen an oder aus?</dt>
-      <dd>In alright: Einstellungen. Direkt in iOS: Einstellungen → Mitteilungen → alright.</dd>
-
-      <dt>Wie setze ich meine Daten zurück?</dt>
-      <dd>alright speichert deine Einstellungen ausschließlich auf deinem Gerät — es gibt kein Konto und keinen Server. App löschen und neu installieren setzt alles zurück.</dd>
-
-      <dt>Ich habe ein neues iPhone. Was passiert mit meinen Einstellungen?</dt>
-      <dd>Richtest du das neue Gerät aus einem iCloud- oder Finder-Backup ein, kommen deine Einstellungen meist automatisch mit zurück. alright selbst hat keine eigene Synchronisierung.</dd>
-
-      <dt>Sammelt alright meine Daten?</dt>
-      <dd>Nein. Details in der <a href="../privacy/de/">Datenschutzerklärung</a>.</dd>
-    </dl>
+  <section class="points">
+    <div>
+      <h2>Ein Satz am Tag</h2>
+      <p>Der Satz für einen Tag steht vorher fest, für alle derselbe. Nichts auswählen, nichts eintippen.</p>
+    </div>
+    <div>
+      <h2>Eine leise Mitteilung</h2>
+      <p>Sie kommt zur selbst gewählten Zeit und lässt dich danach in Ruhe. Nichts, was offen bleibt, keine Serie, die reißt.</p>
+    </div>
+    <div>
+      <h2>Keine Daten</h2>
+      <p>Kein Account, keine Analyse, keine Netzwerkaufrufe. Die Einstellungen bleiben auf dem Gerät, sonst verlässt es nichts.</p>
+    </div>
   </section>
+
+  <p class="closing">Everything&#8217;s alright.</p>
 
   <footer>
-    <p>alright · <a href="../privacy/de/">Datenschutzerklärung</a> · <a href="../">English</a></p>
+    <p>alright · <a href="../support/de/">Support</a> · <a href="../privacy/de/">Datenschutzerklärung</a> · <a href="../">English</a></p>
   </footer>
 </main>
 </body>
