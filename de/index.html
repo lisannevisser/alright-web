@@ -152,29 +152,28 @@
   .footer-inner {
     max-width: 900px;
     margin: 0 auto;
-    padding: 3rem 1.5rem 3.5rem;
-    display: grid;
-    gap: 2rem;
+    padding: 3rem 1.5rem 3rem;
   }
-  /* Marke links, Support und Privacy mittig, Sprache rechts */
-  @media (min-width: 720px) {
-    .footer-inner {
-      grid-template-columns: 1fr auto 1fr;
-      align-items: start;
-    }
-    .footer-links { justify-self: center; }
-    .footer-lang { justify-self: end; }
-  }
-  .footer-mark { margin: 0 0 1.25rem; line-height: 0; color: var(--ink); }
+  .footer-mark { margin: 0 0 0.5rem; line-height: 0; color: var(--ink); }
   .footer-mark .logo { display: block; height: 22px; width: auto; }
   .footer-tagline {
-    margin: 0 0 0.75rem;
-    font-size: 1.15rem;
+    margin: 0;
+    font-size: 0.95rem;
     letter-spacing: -0.01em;
     color: var(--ink);
   }
-  .footer-copy { margin: 0; font-size: 0.8rem; }
-  .footer-links, .footer-lang {
+  /* Copyright und alle Links in einer Zeile, unter der Marke */
+  .footer-bottom {
+    margin-top: 2.5rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem 1.5rem;
+    align-items: baseline;
+    justify-content: space-between;
+    font-size: 0.85rem;
+  }
+  .footer-copy { margin: 0; }
+  .footer-links {
     display: flex;
     flex-wrap: wrap;
     gap: 1.5rem;
@@ -238,9 +237,8 @@
 
 <footer class="site-footer">
   <div class="footer-inner">
-    <div class="footer-brand">
-      <p class="footer-mark">
-        <svg class="logo" viewBox="0 0 765 205" fill="currentColor" role="img" aria-label="alright" xmlns="http://www.w3.org/2000/svg">
+    <p class="footer-mark">
+      <svg class="logo" viewBox="0 0 765 205" fill="currentColor" role="img" aria-label="alright" xmlns="http://www.w3.org/2000/svg">
       <path d="M50.82 160.6C41.2867 160.6 32.6333 158.18 24.86 153.34C17.2333 148.5 11.1467 141.973 6.6 133.76C2.2 125.4 0 116.087 0 105.82C0 95.4068 2.2 86.0934 6.6 77.8801C11.1467 69.5201 17.2333 62.9201 24.86 58.0801C32.6333 53.0934 41.2867 50.6001 50.82 50.6001C58.8867 50.6001 66 52.3601 72.16 55.8801C78.4667 59.2534 83.4533 63.9468 87.12 69.9601C90.7867 75.9734 92.62 82.7934 92.62 90.4201V120.78C92.62 128.407 90.7867 135.227 87.12 141.24C83.6 147.253 78.6867 152.02 72.38 155.54C66.0733 158.913 58.8867 160.6 50.82 160.6ZM54.78 137.72C63.7267 137.72 70.9133 134.713 76.34 128.7C81.9133 122.687 84.7 114.987 84.7 105.6C84.7 99.2934 83.4533 93.7201 80.96 88.8801C78.4667 84.0401 74.9467 80.3001 70.4 77.6601C66 74.8734 60.7933 73.4801 54.78 73.4801C48.9133 73.4801 43.7067 74.8734 39.16 77.6601C34.76 80.3001 31.24 84.0401 28.6 88.8801C26.1067 93.7201 24.86 99.2934 24.86 105.6C24.86 111.907 26.1067 117.48 28.6 122.32C31.24 127.16 34.76 130.973 39.16 133.76C43.7067 136.4 48.9133 137.72 54.78 137.72ZM83.16 158.4V130.02L87.34 104.28L83.16 78.7601V52.8001H107.36V158.4H83.16Z"/>
       <path d="M140.817 158.4V9.34601e-05H165.017V79.2001V158.4H140.817Z"/>
       <path d="M285.072 158.4V52.8001H309.272V158.4H285.072ZM309.272 99.6601L300.912 95.4801C300.912 82.1334 303.845 71.3534 309.712 63.1401C315.725 54.7801 324.745 50.6001 336.772 50.6001C342.052 50.6001 346.819 51.5534 351.072 53.4601C355.325 55.3668 359.285 58.4468 362.952 62.7001L347.112 78.9801C345.205 76.9268 343.079 75.4601 340.732 74.5801C338.385 73.7001 335.672 73.2601 332.592 73.2601C325.845 73.2601 320.272 75.3868 315.872 79.6401C311.472 83.8934 309.272 90.5668 309.272 99.6601Z"/>
@@ -250,17 +248,16 @@
       <path d="M715.11 158.4V8.8001H739.31V158.4H715.11ZM689.81 74.8001V52.8001H764.61V74.8001H689.81Z"/>
       <path d="M189.835 150.109L244.252 1.34982L266.98 9.66362L239.771 84.0432L212.562 158.423L189.835 150.109Z"/>
       </svg>
-      </p>
-      <p class="footer-tagline">Everything&#8217;s alright.</p>
+    </p>
+    <p class="footer-tagline">Everything&#8217;s alright.</p>
+    <div class="footer-bottom">
       <p class="footer-copy">© 2026 Lisanne Visser</p>
+      <nav class="footer-links">
+        <a href="../support/de/">Support</a>
+        <a href="../privacy/de/">Datenschutzerklärung</a>
+        <a href="../">English</a>
+      </nav>
     </div>
-    <nav class="footer-links">
-      <a href="../support/de/">Support</a>
-      <a href="../privacy/de/">Datenschutzerklärung</a>
-    </nav>
-    <nav class="footer-lang">
-      <a href="../">English</a>
-    </nav>
   </div>
 </footer>
 </body>
