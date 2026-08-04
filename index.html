@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>alright — Support</title>
-<meta name="description" content="Support and contact for the alright app.">
+<title>alright — one affirmation a day</title>
+<meta name="description" content="alright shows you one affirmation a day: one quiet notification, no account, no tracking.">
 <meta name="robots" content="noindex, nofollow">
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 <link rel="icon" type="image/png" sizes="32x32" href="favicon.png">
@@ -17,6 +17,7 @@
     --ink: #16140f;
     --muted: #5c584e;
     --rule: rgba(22, 20, 15, 0.12);
+    --card-shadow: 0 24px 60px rgba(22, 20, 15, 0.10);
   }
   @media (prefers-color-scheme: dark) {
     :root {
@@ -24,6 +25,7 @@
       --ink: #f6f4ee;
       --muted: #b3ae9e;
       --rule: rgba(246, 244, 238, 0.14);
+      --card-shadow: 0 24px 60px rgba(0, 0, 0, 0.45);
     }
   }
   * { box-sizing: border-box; }
@@ -36,7 +38,7 @@
     -webkit-font-smoothing: antialiased;
   }
   main {
-    max-width: 620px;
+    max-width: 900px;
     margin: 0 auto;
     padding: 4rem 1.5rem 5rem;
   }
@@ -44,50 +46,93 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin: 0 0 3rem;
+    margin: 0 0 4rem;
   }
-  .wordmark {
-    margin: 0;
-    line-height: 0;
-  }
-  .wordmark .logo {
-    display: block;
-    height: 20px;
-    width: auto;
-  }
-  .lang-switch {
-    font-size: 0.85rem;
-    margin: 0;
-  }
+  .wordmark { margin: 0; line-height: 0; }
+  .wordmark a { display: block; }
+  .wordmark .logo { display: block; height: 20px; width: auto; }
+  .lang-switch { font-size: 0.85rem; margin: 0; }
   .lang-switch a {
     color: var(--muted);
     text-decoration: none;
     border-bottom: 1px solid var(--rule);
   }
   .lang-switch a:hover { color: var(--ink); border-color: currentColor; }
+
+  .hero {
+    display: grid;
+    gap: 3rem;
+    align-items: center;
+  }
+  @media (min-width: 720px) {
+    .hero { grid-template-columns: 1fr 300px; gap: 4rem; }
+  }
   h1 {
-    font-size: 1.5rem;
+    font-size: clamp(2.1rem, 6vw, 3.1rem);
+    line-height: 1.1;
+    letter-spacing: -0.02em;
     font-weight: 600;
-    margin: 0 0 0.5rem;
+    margin: 0 0 1rem;
   }
-  .tagline {
+  .lede {
+    font-size: 1.1rem;
     color: var(--muted);
-    margin: 0 0 2.5rem;
+    margin: 0 0 2rem;
+    max-width: 34ch;
   }
-  section { margin-bottom: 2.5rem; }
-  h2 {
+  .hero-shot { justify-self: center; }
+  @media (min-width: 720px) {
+    .hero-shot { justify-self: end; }
+    .hero-shot img { max-width: 300px; }
+  }
+  .hero-shot img {
+    display: block;
+    width: 100%;
+    max-width: 230px;
+    height: auto;
+    border-radius: 22px;
+    box-shadow: var(--card-shadow);
+  }
+
+  .coming {
+    display: inline-block;
+    margin: 0;
+    padding: 0.5rem 1rem;
+    border: 1px solid var(--rule);
+    border-radius: 999px;
+    font-size: 0.85rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    font-weight: 600;
+    color: var(--muted);
+  }
+
+  .points {
+    display: grid;
+    gap: 2rem;
+    margin: 5rem 0 0;
+    padding-top: 3rem;
+    border-top: 1px solid var(--rule);
+  }
+  @media (min-width: 720px) { .points { grid-template-columns: repeat(3, 1fr); gap: 2.5rem; } }
+  .points h2 {
     font-size: 0.85rem;
     text-transform: uppercase;
     letter-spacing: 0.06em;
     color: var(--muted);
-    margin: 0 0 0.9rem;
     font-weight: 600;
+    margin: 0 0 0.6rem;
   }
-  p { margin: 0 0 0.9rem; }
+  .points p { margin: 0; }
+
+  .closing {
+    margin: 5rem 0 0;
+    font-size: 1.35rem;
+    letter-spacing: -0.01em;
+  }
+
   a { color: var(--ink); text-decoration-color: var(--rule); text-underline-offset: 2px; }
   a:hover { text-decoration-color: currentColor; }
-  .faq dt { font-weight: 600; margin-top: 1.1rem; }
-  .faq dd { margin: 0.25rem 0 0; color: var(--muted); }
   footer {
     color: var(--muted);
     font-size: 0.85rem;
@@ -115,33 +160,36 @@
     <p class="lang-switch"><a href="de/">Deutsch</a></p>
   </div>
 
-  <h1>Support</h1>
-  <p class="tagline">alright shows you one affirmation a day — one quiet notification, and nothing else.</p>
-
-  <section>
-    <h2>Contact</h2>
-    <p>Questions, problems, feedback: <a href="mailto:alrightapp@icloud.com">alrightapp@icloud.com</a>. It's read and answered by the person who builds the app.</p>
+  <section class="hero">
+    <div class="hero-copy">
+      <h1>One affirmation a day.</h1>
+      <p class="lede">One quiet notification at the time you pick. No account, no tracking, no feed to scroll.</p>
+      <p class="coming">Coming to the App Store</p>
+    </div>
+    <div class="hero-shot">
+      <img src="assets/daily-card.png" width="1200" height="1680" alt="The alright app showing the affirmation of the day: You have survived every hard day so far.">
+    </div>
   </section>
 
-  <section>
-    <h2>Frequently asked</h2>
-    <dl class="faq">
-      <dt>How do I turn notifications on or off?</dt>
-      <dd>In alright: Settings. On iOS directly: Settings → Notifications → alright.</dd>
-
-      <dt>How do I reset my data?</dt>
-      <dd>alright stores your settings only on your device — there's no account and no server. Deleting and reinstalling the app resets everything.</dd>
-
-      <dt>I got a new iPhone. What happens to my settings?</dt>
-      <dd>If you set up the new phone from an iCloud or Finder backup, your settings usually come back automatically as part of that backup. alright itself has no separate sync.</dd>
-
-      <dt>Does alright collect my data?</dt>
-      <dd>No. See the <a href="privacy/">Privacy Policy</a> for details.</dd>
-    </dl>
+  <section class="points">
+    <div>
+      <h2>One sentence a day</h2>
+      <p>The sentence for each day is fixed in advance, the same one for everyone. Nothing to choose, nothing to type.</p>
+    </div>
+    <div>
+      <h2>One quiet notification</h2>
+      <p>It arrives at the time you pick and then leaves you alone. Nothing to keep up with, no streak to lose.</p>
+    </div>
+    <div>
+      <h2>Nothing collected</h2>
+      <p>No account, no analytics, no network calls. Your settings stay on your device, and nothing else leaves it.</p>
+    </div>
   </section>
+
+  <p class="closing">Everything&#8217;s alright.</p>
 
   <footer>
-    <p>alright · <a href="privacy/">Privacy Policy</a> · <a href="de/">Deutsch</a></p>
+    <p>alright · <a href="support/">Support</a> · <a href="privacy/">Privacy Policy</a> · <a href="de/">Deutsch</a></p>
   </footer>
 </main>
 </body>

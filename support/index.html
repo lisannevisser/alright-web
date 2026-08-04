@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>alright — Privacy Policy</title>
-<meta name="description" content="Privacy Policy for the alright app.">
+<title>alright — Support</title>
+<meta name="description" content="Support and contact for the alright app.">
 <meta name="robots" content="noindex, nofollow">
 <link rel="icon" type="image/svg+xml" href="../favicon.svg">
 <link rel="icon" type="image/png" sizes="32x32" href="../favicon.png">
@@ -32,7 +32,7 @@
     background: var(--bg);
     color: var(--ink);
     font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    line-height: 1.6;
+    line-height: 1.55;
     -webkit-font-smoothing: antialiased;
   }
   main {
@@ -50,13 +50,15 @@
     margin: 0;
     line-height: 0;
   }
-  .wordmark a { display: block; }
   .wordmark .logo {
     display: block;
     height: 20px;
     width: auto;
   }
-  .lang-switch { font-size: 0.85rem; margin: 0; }
+  .lang-switch {
+    font-size: 0.85rem;
+    margin: 0;
+  }
   .lang-switch a {
     color: var(--muted);
     text-decoration: none;
@@ -66,23 +68,26 @@
   h1 {
     font-size: 1.5rem;
     font-weight: 600;
-    margin: 0 0 0.4rem;
+    margin: 0 0 0.5rem;
   }
-  .meta {
+  .tagline {
     color: var(--muted);
-    font-size: 0.9rem;
     margin: 0 0 2.5rem;
   }
-  section { margin-bottom: 1.8rem; }
+  section { margin-bottom: 2.5rem; }
   h2 {
-    font-size: 1.02rem;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--muted);
+    margin: 0 0 0.9rem;
     font-weight: 600;
-    margin: 0 0 0.6rem;
   }
-  p, li { margin: 0 0 0.8rem; }
-  ul { margin: 0 0 0.8rem; padding-left: 1.2rem; }
+  p { margin: 0 0 0.9rem; }
   a { color: var(--ink); text-decoration-color: var(--rule); text-underline-offset: 2px; }
   a:hover { text-decoration-color: currentColor; }
+  .faq dt { font-weight: 600; margin-top: 1.1rem; }
+  .faq dd { margin: 0.25rem 0 0; color: var(--muted); }
   footer {
     color: var(--muted);
     font-size: 0.85rem;
@@ -110,56 +115,33 @@
     <p class="lang-switch"><a href="de/">Deutsch</a></p>
   </div>
 
-  <h1>Privacy Policy</h1>
-  <p class="meta">Effective: August 2, 2026</p>
-
-  <section>
-    <h2>Short version</h2>
-    <p>alright doesn't collect any data. There's no account, no analytics, no advertising, no third-party tracking, and no server run by us. Everything the app stores lives on your device.</p>
-  </section>
-
-  <section>
-    <h2>What alright stores, and where</h2>
-    <ul>
-      <li><strong>Your settings</strong> (chosen notification time, language, visual style, appearance) are saved locally on your device using Apple's standard app storage (UserDefaults).</li>
-      <li><strong>The daily affirmations</strong> are bundled with the app itself — nothing is downloaded or fetched from a server.</li>
-      <li><strong>Notifications</strong> are scheduled locally on your device with Apple's notification system (UNUserNotificationCenter). We never see when or whether a notification was delivered or opened.</li>
-    </ul>
-    <p>If your device backs up to iCloud or your computer, that backup is handled entirely by Apple under Apple's own privacy terms — it's not something alright initiates or controls.</p>
-  </section>
-
-  <section>
-    <h2>Third parties</h2>
-    <p>None. alright contains no analytics SDKs, no advertising SDKs, and makes no network requests. We don't share data with anyone, because we don't collect any to share.</p>
-  </section>
-
-  <section>
-    <h2>Retention and deletion</h2>
-    <p>Your settings stay on your device until you change them, or until you delete the app, which removes everything alright stored. There's no account to close and no server-side copy to request deletion of, because none exists.</p>
-  </section>
-
-  <section>
-    <h2>Notification permission</h2>
-    <p>You can turn notifications on or off at any time in iOS Settings → Notifications → alright.</p>
-  </section>
-
-  <section>
-    <h2>Children</h2>
-    <p>alright doesn't collect personal data from anyone, including children.</p>
-  </section>
-
-  <section>
-    <h2>Changes to this policy</h2>
-    <p>If this policy changes, we'll update the date above and post the new version at this same address.</p>
-  </section>
+  <h1>Support</h1>
+  <p class="tagline">alright shows you one affirmation a day — one quiet notification, and nothing else.</p>
 
   <section>
     <h2>Contact</h2>
-    <p>Lisanne Visser (developer of alright) — <a href="mailto:alrightapp@icloud.com">alrightapp@icloud.com</a></p>
+    <p>Questions, problems, feedback: <a href="mailto:alrightapp@icloud.com">alrightapp@icloud.com</a>. It's read and answered by the person who builds the app.</p>
+  </section>
+
+  <section>
+    <h2>Frequently asked</h2>
+    <dl class="faq">
+      <dt>How do I turn notifications on or off?</dt>
+      <dd>In alright: Settings. On iOS directly: Settings → Notifications → alright.</dd>
+
+      <dt>How do I reset my data?</dt>
+      <dd>alright stores your settings only on your device — there's no account and no server. Deleting and reinstalling the app resets everything.</dd>
+
+      <dt>I got a new iPhone. What happens to my settings?</dt>
+      <dd>If you set up the new phone from an iCloud or Finder backup, your settings usually come back automatically as part of that backup. alright itself has no separate sync.</dd>
+
+      <dt>Does alright collect my data?</dt>
+      <dd>No. See the <a href="../privacy/">Privacy Policy</a> for details.</dd>
+    </dl>
   </section>
 
   <footer>
-    <p><a href="../">← alright</a> · <a href="../support/">Support</a> · <a href="de/">Deutsch</a></p>
+    <p><a href="../">alright</a> · <a href="../privacy/">Privacy Policy</a> · <a href="de/">Deutsch</a></p>
   </footer>
 </main>
 </body>
