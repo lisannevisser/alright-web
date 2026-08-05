@@ -32,11 +32,22 @@
     var nav = document.getElementById(toggle.getAttribute("aria-controls"));
     if (!nav) return;
 
+    var header = toggle.closest ? toggle.closest(".site-header") : null;
+
     var setMenu = function (open) {
       toggle.setAttribute("aria-expanded", open ? "true" : "false");
       nav.classList.toggle("is-open", open);
       /* The sheet covers the page, so the page underneath must not scroll. */
       document.documentElement.classList.toggle("menu-open", open);
+      /* The first link has to start below the header, and the header is not
+         always at the very top of the window. Measured rather than assumed:
+         a guessed height put "About" straight behind the wordmark as soon as
+         anything sat above the header. */
+      if (open && header) {
+        nav.style.paddingTop = Math.round(header.getBoundingClientRect().bottom + 24) + "px";
+      } else {
+        nav.style.paddingTop = "";
+      }
     };
 
     toggle.addEventListener("click", function () {
