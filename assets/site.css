@@ -445,6 +445,7 @@ main { display: block; }
   box-shadow: var(--shadow-soft);
 }
 .device-screen {
+  container-type: inline-size;
   height: 100%;
   border-radius: 35px;
   overflow: hidden;
@@ -459,13 +460,15 @@ main { display: block; }
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 1rem;
+  gap: 5.7cqw;
   padding: 1.5rem 1.4rem 2.5rem;
+  padding: 8.6cqw 7.9cqw 14cqw;
   text-align: center;
 }
 .screen-sentence {
   margin: 0;
   font-size: clamp(1.05rem, 3.6vw, 1.25rem);
+  font-size: 7.2cqw;
   font-weight: 500;
   line-height: 1.32;
   letter-spacing: -0.015em;
@@ -474,6 +477,7 @@ main { display: block; }
 .screen-date {
   margin: 0;
   font-size: 0.72rem;
+  font-size: 4cqw;
   letter-spacing: 0.01em;
   color: var(--clean-chrome);
 }
@@ -557,6 +561,18 @@ main { display: block; }
 
 /* ------------------------------------------------------- 6. The three styles */
 
+/* Copy on one side, the phone on the other, the way the hero is built. Below
+   900px they stack, copy first. */
+.styles-split { display: grid; gap: clamp(2.5rem, 5vw, 4rem); }
+@media (min-width: 900px) {
+  .styles-split {
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 4.5rem;
+  }
+}
+.styles-split .section-head { margin-bottom: 0; }
+
 /* One stage, three settings, no controls: the phone changes on its own every
    few seconds and says which style it is currently wearing. Without
    JavaScript, and for anyone who asked their system for less motion, all
@@ -567,7 +583,9 @@ main { display: block; }
   justify-content: center;
   gap: clamp(2rem, 5vw, 3.5rem);
 }
-.style-shot { margin: 0; }
+/* A definite width, or the flex item shrinks to its content and the phone —
+   sized in percent of it — collapses into a sliver. */
+.style-shot { margin: 0; width: min(300px, 100%); }
 .style-shot figcaption {
   margin-top: 1.25rem;
   text-align: center;
@@ -600,12 +618,13 @@ main { display: block; }
   align-items: stretch;
   justify-content: center;
   text-align: left;
-  padding-inline: 1.6rem;
+  padding-inline: 9cqw;
 }
 .screen-editorial .screen-sentence {
   font-family: ui-serif, "New York", Georgia, "Times New Roman", serif;
   font-weight: 300;
   font-size: clamp(1.05rem, 3.4vw, 1.2rem);
+  font-size: 6.9cqw;
   line-height: 1.45;
   letter-spacing: 0;
   text-wrap: pretty;
@@ -631,18 +650,19 @@ main { display: block; }
    Archivo Black in capitals. Dark mode flips ground and slab instead of
    inverting, exactly as the app does. */
 .screen-bold { background: var(--bold-ground); color: var(--bold-ink); }
-.screen-bold .screen-body { padding: 1.5rem 1.2rem 2rem; }
+.screen-bold .screen-body { padding: 8.6cqw 6.9cqw 11.5cqw; }
 .screen-bold .slab {
   background: var(--bold-slab);
-  border: 4px solid var(--bold-border);
-  box-shadow: 10px 10px 0 var(--bold-shadow);
-  padding: 1.1rem 0.9rem;
+  border: max(2px, 1.4cqw) solid var(--bold-border);
+  box-shadow: max(4px, 3.5cqw) max(4px, 3.5cqw) 0 var(--bold-shadow);
+  padding: 6.3cqw 5.2cqw;
 }
 .screen-bold .screen-sentence {
   font-family: "Archivo Black", Impact, "Haettenschweiler", sans-serif;
   font-weight: 400;
   text-transform: uppercase;
   font-size: clamp(1rem, 3.4vw, 1.2rem);
+  font-size: 6.8cqw;
   line-height: 1.06;
   letter-spacing: -0.01em;
   hyphens: auto;
@@ -652,6 +672,65 @@ main { display: block; }
   font-weight: 600;
   letter-spacing: 0.1em;
   text-transform: uppercase;
+}
+
+/* -------------------------------------------- 6b. Both schemes, side by side
+
+   The page follows the reader's system, so it shows one of the two. On the
+   design page the claim is that each style is drawn twice rather than
+   inverted, and a claim like that has to be shown: these two blocks pin the
+   app's palettes regardless of what the rest of the page is doing. */
+
+.scheme-light {
+  --clean-paper: #ffffff;
+  --clean-ink: #111417;
+  --clean-chrome: #3a4a5a;
+  --editorial-paper: #f7f4ee;
+  --editorial-ink: #1a1714;
+  --editorial-accent: #1b2fa8;
+  --bold-ground: #e8ff3c;
+  --bold-slab: #ffffff;
+  --bold-ink: #0a0a0a;
+  --bold-shadow: #0a0a0a;
+  --bold-date: #0a0a0a;
+  --bold-border: #0a0a0a;
+}
+.scheme-dark {
+  --clean-paper: #111417;
+  --clean-ink: #f5f5f0;
+  --clean-chrome: #8fa0b0;
+  --editorial-paper: #161310;
+  --editorial-ink: #f1ebe1;
+  --editorial-accent: #8fa2f5;
+  --bold-ground: #0a0a0a;
+  --bold-slab: #e8ff3c;
+  --bold-ink: #0a0a0a;
+  --bold-shadow: #ffffff;
+  --bold-date: #ffffff;
+  --bold-border: #e8ff3c;
+}
+
+.scheme-figure { margin: 2rem 0 2.5rem; }
+.scheme-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(0.75rem, 2vw, 1.5rem);
+}
+.scheme-row + .scheme-row { margin-top: clamp(0.75rem, 2vw, 1.5rem); }
+.scheme-row .device { max-width: none; border-radius: 18px; padding: 4px; }
+.scheme-row .device-screen { border-radius: 15px; }
+.scheme-figure figcaption {
+  margin-top: 1rem;
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+.scheme-label {
+  margin: 0 0 0.6rem;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
 }
 
 /* ------------------------------------------------------------ 7. Prose pages */
