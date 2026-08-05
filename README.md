@@ -26,9 +26,9 @@ Note: Support used to live at `/`. The Support URL in App Store Connect has to p
 - `assets/site.css` — the whole design system, linked by every page. Tokens at the top; the
   three app styles (Clean, Editorial, Bold) are reproduced from the colours in the app's
   `Brand.swift` and `ThemeStyle.swift`.
-- `assets/site.js` — two progressive enhancements: the phone on the homepage that changes style
-  by itself every few seconds, and today's date in the mockups. Without it all three styles
-  simply stand next to each other and the written-out date stays. The rotation stops while the
+- `assets/site.js` — three progressive enhancements: the menu button on phones, the phone on the
+  homepage that changes style by itself every few seconds, and today's date in the mockups. Without it the navigation stays open on a phone, all three
+  styles simply stand next to each other, and the written-out date stays. The rotation stops while the
   section is off screen and never starts for anyone who asked their system for reduced motion.
   Nothing is loaded, sent or stored.
 - `assets/fonts/` — Archivo Black, the typeface the app sets the Bold style in, and Outfit,

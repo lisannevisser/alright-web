@@ -1,8 +1,10 @@
 /* alright — website behaviour
 
-   Two small things, both progressive enhancements: without this file the three
-   styles simply stand next to each other and the date on a mockup is the one
-   written into the HTML. Nothing here loads, sends or stores anything.
+   Three small things, all progressive enhancements: without this file the
+   navigation stays open on a phone instead of hiding behind a button, the
+   three styles simply stand next to each other, and the date on a mockup is
+   the one written into the HTML. Nothing here loads, sends or stores
+   anything.
 */
 (function () {
   "use strict";
@@ -20,6 +22,38 @@
   var stillness = window.matchMedia
     ? window.matchMedia("(prefers-reduced-motion: reduce)")
     : { matches: false };
+
+  /* --------------------------------------------------- the menu, on a phone */
+
+  /* The nav is found through the button's own aria-controls rather than a
+     fixed id, so a page carrying more than one header still wires each button
+     to its own menu. */
+  each(document.querySelectorAll(".nav-toggle"), function (toggle) {
+    var nav = document.getElementById(toggle.getAttribute("aria-controls"));
+    if (!nav) return;
+
+    var setMenu = function (open) {
+      toggle.setAttribute("aria-expanded", open ? "true" : "false");
+      nav.classList.toggle("is-open", open);
+    };
+
+    toggle.addEventListener("click", function () {
+      setMenu(toggle.getAttribute("aria-expanded") !== "true");
+    });
+
+    /* Escape closes it, and so does following a link — the page navigates
+       anyway, but the menu should not flash open on the way out. */
+    document.addEventListener("keydown", function (event) {
+      if (event.key !== "Escape") return;
+      if (toggle.getAttribute("aria-expanded") !== "true") return;
+      setMenu(false);
+      toggle.focus();
+    });
+
+    each(nav.querySelectorAll("a"), function (link) {
+      link.addEventListener("click", function () { setMenu(false); });
+    });
+  });
 
   /* ------------------------------------------- the three styles, on their own
 

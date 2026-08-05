@@ -198,6 +198,63 @@ h1, h2, h3 {
 .site-nav a[aria-current="page"] { color: var(--ink); border-bottom-color: currentColor; }
 .site-nav .nav-lang { color: var(--muted); }
 
+/* The menu button, on a phone only. It is in the markup on every page but
+   stays hidden until site.js announces itself: without JavaScript a button
+   that toggles nothing would be the only way to reach the other pages, so
+   the navigation simply stays open instead. */
+.nav-toggle { display: none; }
+.nav-icon, .nav-icon::before, .nav-icon::after {
+  display: block;
+  width: 20px;
+  height: 2px;
+  border-radius: 2px;
+  background: currentColor;
+}
+.nav-icon::before, .nav-icon::after { content: ""; position: absolute; }
+.nav-icon::before { transform: translateY(-6px); }
+.nav-icon::after { transform: translateY(6px); }
+
+@media (max-width: 719px) {
+  .js .nav-toggle {
+    display: inline-flex;
+    position: relative;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    margin-right: -0.6rem;
+    padding: 0;
+    border: 0;
+    background: none;
+    color: var(--ink);
+    cursor: pointer;
+  }
+  .js .nav-toggle[aria-expanded="true"] .nav-icon { background: transparent; }
+  .js .nav-toggle[aria-expanded="true"] .nav-icon::before { transform: rotate(45deg); }
+  .js .nav-toggle[aria-expanded="true"] .nav-icon::after { transform: rotate(-45deg); }
+
+  .js .site-nav { display: none; }
+  .js .site-nav.is-open {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+    gap: 0;
+    margin-top: 0.75rem;
+    padding-top: 0.25rem;
+    border-top: 1px solid var(--rule);
+    font-size: 1.05rem;
+  }
+  /* Full-width rows rather than a stack of small links: on a phone the target
+     is a thumb, not a pointer. */
+  .js .site-nav.is-open a {
+    padding: 0.9rem 0;
+    border-bottom: 1px solid var(--rule);
+  }
+  .js .site-nav.is-open a:last-child { border-bottom: 0; }
+  .js .site-nav.is-open a[aria-current="page"] { border-bottom-color: var(--rule); }
+}
+
 main { display: block; }
 
 .site-footer {
