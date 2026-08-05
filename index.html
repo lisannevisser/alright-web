@@ -4,193 +4,18 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>alright — one affirmation a day</title>
-<meta name="description" content="alright shows you one affirmation a day: one quiet notification, no account, no tracking.">
+<meta name="description" content="alright shows you one affirmation a day: one quiet notification, no account, no tracking. Coming to the App Store.">
 <meta name="robots" content="noindex, nofollow">
+<link rel="stylesheet" href="assets/site.css">
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 <link rel="icon" type="image/png" sizes="32x32" href="favicon.png">
 <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
 <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
-<style>
-  :root {
-    color-scheme: light dark;
-    --bg: #faf9f6;
-    --ink: #16140f;
-    --muted: #5c584e;
-    --rule: rgba(22, 20, 15, 0.12);
-    --footer-bg: #efece3;
-    --card-bg: #ffffff;
-    --card-ink: #111417;
-    --card-muted: #3a4a5a;
-    --card-shadow: 0 24px 60px rgba(22, 20, 15, 0.10);
-  }
-  @media (prefers-color-scheme: dark) {
-    :root {
-      --bg: #121109;
-      --ink: #f6f4ee;
-      --muted: #b3ae9e;
-      --rule: rgba(246, 244, 238, 0.14);
-      --footer-bg: #1b1810;
-      --card-bg: #111417;
-      --card-ink: #f5f5f0;
-      --card-muted: #8fa0b0;
-      --card-shadow: 0 24px 60px rgba(0, 0, 0, 0.45);
-    }
-  }
-  * { box-sizing: border-box; }
-  html, body { margin: 0; padding: 0; }
-  body {
-    background: var(--bg);
-    color: var(--ink);
-    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    line-height: 1.55;
-    -webkit-font-smoothing: antialiased;
-  }
-  main {
-    max-width: 900px;
-    margin: 0 auto;
-    padding: 4rem 1.5rem 6rem;
-  }
-  .top-row { margin: 0 0 4rem; }
-  .wordmark { margin: 0; line-height: 0; }
-  .wordmark .logo { display: block; height: 20px; width: auto; }
-
-  .hero {
-    display: grid;
-    gap: 3rem;
-    align-items: center;
-  }
-  @media (min-width: 720px) {
-    .hero { grid-template-columns: 1fr 300px; gap: 4rem; }
-  }
-  h1 {
-    font-size: clamp(2.1rem, 6vw, 3.1rem);
-    line-height: 1.1;
-    letter-spacing: -0.02em;
-    font-weight: 600;
-    margin: 0 0 1rem;
-  }
-  .lede {
-    font-size: 1.1rem;
-    color: var(--muted);
-    margin: 0 0 2rem;
-    max-width: 34ch;
-  }
-  .coming {
-    display: inline-block;
-    margin: 0;
-    padding: 0.5rem 1rem;
-    border: 1px solid var(--rule);
-    border-radius: 999px;
-    font-size: 0.85rem;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    font-weight: 600;
-    color: var(--muted);
-  }
-
-  .hero-shot { justify-self: center; width: 100%; max-width: 230px; }
-  @media (min-width: 720px) {
-    .hero-shot { justify-self: end; max-width: 300px; }
-  }
-  /* Die Tageskarte, gesetzt wie im App-Screen: Papier, ein Satz, Datumszeile */
-  .card {
-    aspect-ratio: 5 / 7;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 0.9rem;
-    padding: 1.75rem;
-    background: var(--card-bg);
-    color: var(--card-ink);
-    border-radius: 22px;
-    box-shadow: var(--card-shadow);
-    text-align: center;
-  }
-  .card-sentence {
-    margin: 0;
-    font-size: clamp(1.05rem, 4.4vw, 1.3rem);
-    font-weight: 500;
-    line-height: 1.3;
-    letter-spacing: -0.01em;
-    text-wrap: balance;
-  }
-  .card-date {
-    margin: 0;
-    font-size: 0.75rem;
-    color: var(--card-muted);
-  }
-
-  .points {
-    display: grid;
-    gap: 2rem;
-    margin: 5rem 0 0;
-    padding-top: 3rem;
-    border-top: 1px solid var(--rule);
-  }
-  @media (min-width: 720px) { .points { grid-template-columns: repeat(3, 1fr); gap: 2.5rem; } }
-  .points h2 {
-    font-size: 0.85rem;
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-    color: var(--muted);
-    font-weight: 600;
-    margin: 0 0 0.6rem;
-  }
-  .points p { margin: 0; }
-
-  a { color: var(--ink); text-decoration-color: var(--rule); text-underline-offset: 2px; }
-  a:hover { text-decoration-color: currentColor; }
-
-  /* Footer als eigenes Band: abgesetzte Fläche, eigene Kante, ruhigere Farbe */
-  .site-footer {
-    background: var(--footer-bg);
-    border-top: 1px solid var(--rule);
-    color: var(--muted);
-    font-size: 0.9rem;
-  }
-  .footer-inner {
-    max-width: 900px;
-    margin: 0 auto;
-    padding: 3rem 1.5rem 3rem;
-  }
-  .footer-mark { margin: 0 0 0.5rem; line-height: 0; color: var(--ink); }
-  .footer-mark .logo { display: block; height: 22px; width: auto; }
-  .footer-tagline {
-    margin: 0;
-    font-size: 0.95rem;
-    letter-spacing: -0.01em;
-    color: var(--ink);
-  }
-  /* Copyright und alle Links in einer Zeile, unter der Marke */
-  .footer-bottom {
-    margin-top: 2.5rem;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.75rem 1.5rem;
-    align-items: baseline;
-    justify-content: space-between;
-    font-size: 0.85rem;
-  }
-  .footer-copy { margin: 0; }
-  .footer-links {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1.5rem;
-  }
-  .site-footer a {
-    color: var(--muted);
-    text-decoration: none;
-    border-bottom: 1px solid transparent;
-    padding-bottom: 2px;
-  }
-  .site-footer a:hover { color: var(--ink); border-color: currentColor; }
-</style>
 </head>
 <body>
-<main>
-  <div class="top-row">
-    <p class="wordmark">
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="./" aria-label="alright">
       <svg class="logo" viewBox="0 0 765 205" fill="currentColor" role="img" aria-label="alright" xmlns="http://www.w3.org/2000/svg">
       <path d="M50.82 160.6C41.2867 160.6 32.6333 158.18 24.86 153.34C17.2333 148.5 11.1467 141.973 6.6 133.76C2.2 125.4 0 116.087 0 105.82C0 95.4068 2.2 86.0934 6.6 77.8801C11.1467 69.5201 17.2333 62.9201 24.86 58.0801C32.6333 53.0934 41.2867 50.6001 50.82 50.6001C58.8867 50.6001 66 52.3601 72.16 55.8801C78.4667 59.2534 83.4533 63.9468 87.12 69.9601C90.7867 75.9734 92.62 82.7934 92.62 90.4201V120.78C92.62 128.407 90.7867 135.227 87.12 141.24C83.6 147.253 78.6867 152.02 72.38 155.54C66.0733 158.913 58.8867 160.6 50.82 160.6ZM54.78 137.72C63.7267 137.72 70.9133 134.713 76.34 128.7C81.9133 122.687 84.7 114.987 84.7 105.6C84.7 99.2934 83.4533 93.7201 80.96 88.8801C78.4667 84.0401 74.9467 80.3001 70.4 77.6601C66 74.8734 60.7933 73.4801 54.78 73.4801C48.9133 73.4801 43.7067 74.8734 39.16 77.6601C34.76 80.3001 31.24 84.0401 28.6 88.8801C26.1067 93.7201 24.86 99.2934 24.86 105.6C24.86 111.907 26.1067 117.48 28.6 122.32C31.24 127.16 34.76 130.973 39.16 133.76C43.7067 136.4 48.9133 137.72 54.78 137.72ZM83.16 158.4V130.02L87.34 104.28L83.16 78.7601V52.8001H107.36V158.4H83.16Z"/>
       <path d="M140.817 158.4V9.34601e-05H165.017V79.2001V158.4H140.817Z"/>
@@ -201,64 +26,324 @@
       <path d="M715.11 158.4V8.8001H739.31V158.4H715.11ZM689.81 74.8001V52.8001H764.61V74.8001H689.81Z"/>
       <path d="M189.835 150.109L244.252 1.34982L266.98 9.66362L239.771 84.0432L212.562 158.423L189.835 150.109Z"/>
       </svg>
-    </p>
+    </a>
+    <nav class="site-nav" aria-label="Main">
+        <a href="design/">Design</a>
+        <a href="whats-next/">What&#8217;s next</a>
+        <a href="support/">Support</a>
+        <a class="nav-lang" href="de/">Deutsch</a>
+    </nav>
   </div>
+</header>
 
-  <section class="hero">
-    <div class="hero-copy">
+<main id="content">
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
       <h1>One affirmation a day.</h1>
-      <p class="lede">One quiet notification at the time you pick. No account, no tracking, no feed to scroll.</p>
-      <p class="coming">Coming to the App Store</p>
+      <p class="lede">One quiet notification at the time you pick. No account,
+        no tracking, no feed to scroll.</p>
+      <p class="status">Coming to the App Store</p>
+      <ul class="hero-facts">
+        <li>120 sentences</li>
+        <li>English and German</li>
+        <li>Three styles</li>
+        <li>Nothing collected</li>
+      </ul>
     </div>
-    <div class="hero-shot">
-      <div class="card" role="img" aria-label="The alright app showing the affirmation of the day: You have handled hard days before. Today is not different.">
-        <p class="card-sentence">You&#8217;ve handled hard days before. Today is not different.</p>
-        <p class="card-date">Tuesday, August 4</p>
+    <div class="hero-shot" data-card data-nudge-label="Another sentence" data-sentences='["You\u2019ve handled hard days before. Today is not different.", "Your pace is allowed to be your own.", "You don\u2019t have to earn your rest.", "You can plan tomorrow tomorrow.", "You don\u2019t have to carry all of it today."]'>
+      <div class="device">
+      <div class="device-screen screen-clean">
+        <div class="screen-top"><svg class="gear" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 8a4 4 0 100 8 4 4 0 000-8zm0 6.2A2.2 2.2 0 1112 9.8a2.2 2.2 0 010 4.4z"/><path d="M20.3 13.1l-1.6-.9a6.9 6.9 0 000-2.4l1.6-.9a.8.8 0 00.3-1.1l-1.6-2.8a.8.8 0 00-1.1-.3l-1.6.9a7 7 0 00-2-1.2V2.6a.8.8 0 00-.8-.8h-3.2a.8.8 0 00-.8.8v1.8a7 7 0 00-2 1.2l-1.6-.9a.8.8 0 00-1.1.3L3.2 7.8a.8.8 0 00.3 1.1l1.6.9a6.9 6.9 0 000 2.4l-1.6.9a.8.8 0 00-.3 1.1l1.6 2.8a.8.8 0 001.1.3l1.6-.9a7 7 0 002 1.2v1.8c0 .4.4.8.8.8h3.2c.4 0 .8-.4.8-.8v-1.8a7 7 0 002-1.2l1.6.9a.8.8 0 001.1-.3l1.6-2.8a.8.8 0 00-.3-1.1z" opacity=".55"/></svg></div>
+        <div class="screen-body">
+          <p class="screen-sentence" data-card-sentence>You&#8217;ve handled hard days before. Today is not different.</p>
+          <p class="screen-date" data-today>Wednesday, August 5</p>
+        </div>
       </div>
     </div>
-  </section>
+      <p class="device-caption">The sentence for today. That is the whole screen.</p>
+    </div>
+  </div>
+</section>
 
-  <section class="points">
-    <div>
-      <h2>One sentence a day</h2>
-      <p>The sentence for each day is fixed in advance, the same one for everyone. Nothing to choose, nothing to type.</p>
-    </div>
-    <div>
-      <h2>One quiet notification</h2>
-      <p>It arrives at the time you pick and then leaves you alone. Nothing to keep up with, no streak to lose.</p>
-    </div>
-    <div>
-      <h2>Nothing collected</h2>
-      <p>No account, no analytics, no network calls. Your settings stay on your device, and nothing else leaves it.</p>
-    </div>
-  </section>
+<section class="statement">
+  <div class="wrap">
+    <blockquote>That is the whole app, and that is the point.</blockquote>
+    <p class="attribution">alright shows you a single affirmation each day: one
+      carefully written sentence, full screen, in quiet typography. It arrives as
+      one notification at a time you choose. Nothing to set up beyond that,
+      nothing to keep up with, nothing that asks for you again later.</p>
+  </div>
+</section>
 
+<section class="section">
+  <div class="wrap rule-top">
+    <div class="section-head">
+      <h2>How it works</h2>
+      <p>Three steps, once. After that the app has nothing left to ask of you.</p>
+    </div>
+    <div class="steps">
+      <div class="step">
+        <h3>Pick a time</h3>
+        <p>Whatever hour actually suits you: with the first coffee, on the way
+          to work, or last thing at night. One time, changeable whenever you
+          like.</p>
+      </div>
+      <div class="step">
+        <h3>One sentence arrives</h3>
+        <p>A single notification, once a day, at that time. Never a second one,
+          and never a reminder about the reminder.</p>
+      </div>
+      <div class="step">
+        <h3>Read it, then put the phone down</h3>
+        <p>Open the app for the full-screen setting, or don&#8217;t. The sentence
+          is the same either way, and nothing counts whether you did.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap rule-top">
+    <div class="section-head">
+      <h2>Three ways to set the same sentence</h2>
+      <p>One catalogue, three typographic settings. Switch whenever the mood
+        changes &mdash; the sentence of the day stays the same.</p>
+    </div>
+    <div class="styles-layout">
+      <div>
+        <div class="style-tabs" role="tablist" aria-label="Design styles" data-style-tabs>
+          <button class="style-tab" type="button" role="tab" id="tab-clean"
+            aria-controls="panel-clean" data-screen="screen-clean" aria-selected="true">Clean</button>
+          <button class="style-tab" type="button" role="tab" id="tab-editorial"
+            aria-controls="panel-editorial" data-screen="screen-editorial" aria-selected="false">Editorial</button>
+          <button class="style-tab" type="button" role="tab" id="tab-bold"
+            aria-controls="panel-bold" data-screen="screen-bold" aria-selected="false">Bold</button>
+        </div>
+
+        <div class="style-panel" id="panel-clean" role="tabpanel" aria-labelledby="tab-clean">
+          <h3>Clean</h3>
+          <p>The default. System type on paper white, centred, nothing else on
+            the screen. The setting that gets out of the way of the sentence.</p>
+          <dl>
+            <dt>Type</dt><dd>San Francisco, the system typeface</dd>
+            <dt>Paper</dt><dd>White, ink near-black</dd>
+            <dt>For</dt><dd>Every day, without a decision to make</dd>
+          </dl>
+        </div>
+
+        <div class="style-panel" id="panel-editorial" role="tabpanel" aria-labelledby="tab-editorial">
+          <h3>Editorial</h3>
+          <p>A serif on ivory with a raised initial in ultramarine that the first
+            lines set around. Cold blue against warm paper is the oldest contrast
+            in book design, and it reads as printed rather than as decorated.</p>
+          <dl>
+            <dt>Type</dt><dd>New York, Apple&#8217;s own serif</dd>
+            <dt>Paper</dt><dd>Ivory, accent ultramarine</dd>
+            <dt>For</dt><dd>Reading a sentence like a page</dd>
+          </dl>
+        </div>
+
+        <div class="style-panel" id="panel-bold" role="tabpanel" aria-labelledby="tab-bold">
+          <h3>Bold</h3>
+          <p>The sentence as a poster: capitals in Archivo Black on a slab with a
+            hard border and a hard offset shadow, on acid yellow. Dark mode
+            doesn&#8217;t invert it &mdash; acid becomes the slab, because black
+            on black would erase the style.</p>
+          <dl>
+            <dt>Type</dt><dd>Archivo Black, set in capitals</dd>
+            <dt>Paper</dt><dd>Acid on white, shadow hard</dd>
+            <dt>For</dt><dd>Days that need saying out loud</dd>
+          </dl>
+        </div>
+      </div>
+
+      <div>
+        <div class="device" id="screen-clean">
+      <div class="device-screen screen-clean">
+        <div class="screen-top"><svg class="gear" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 8a4 4 0 100 8 4 4 0 000-8zm0 6.2A2.2 2.2 0 1112 9.8a2.2 2.2 0 010 4.4z"/><path d="M20.3 13.1l-1.6-.9a6.9 6.9 0 000-2.4l1.6-.9a.8.8 0 00.3-1.1l-1.6-2.8a.8.8 0 00-1.1-.3l-1.6.9a7 7 0 00-2-1.2V2.6a.8.8 0 00-.8-.8h-3.2a.8.8 0 00-.8.8v1.8a7 7 0 00-2 1.2l-1.6-.9a.8.8 0 00-1.1.3L3.2 7.8a.8.8 0 00.3 1.1l1.6.9a6.9 6.9 0 000 2.4l-1.6.9a.8.8 0 00-.3 1.1l1.6 2.8a.8.8 0 001.1.3l1.6-.9a7 7 0 002 1.2v1.8c0 .4.4.8.8.8h3.2c.4 0 .8-.4.8-.8v-1.8a7 7 0 002-1.2l1.6.9a.8.8 0 001.1-.3l1.6-2.8a.8.8 0 00-.3-1.1z" opacity=".55"/></svg></div>
+        <div class="screen-body">
+          <p class="screen-sentence" data-card-sentence>You&#8217;ve handled hard days before. Today is not different.</p>
+          <p class="screen-date" data-today>Wednesday, August 5</p>
+        </div>
+      </div>
+    </div>
+        <div class="device" id="screen-editorial" hidden>
+      <div class="device-screen screen-editorial">
+        <div class="screen-top"><svg class="gear" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 8a4 4 0 100 8 4 4 0 000-8zm0 6.2A2.2 2.2 0 1112 9.8a2.2 2.2 0 010 4.4z"/><path d="M20.3 13.1l-1.6-.9a6.9 6.9 0 000-2.4l1.6-.9a.8.8 0 00.3-1.1l-1.6-2.8a.8.8 0 00-1.1-.3l-1.6.9a7 7 0 00-2-1.2V2.6a.8.8 0 00-.8-.8h-3.2a.8.8 0 00-.8.8v1.8a7 7 0 00-2 1.2l-1.6-.9a.8.8 0 00-1.1.3L3.2 7.8a.8.8 0 00.3 1.1l1.6.9a6.9 6.9 0 000 2.4l-1.6.9a.8.8 0 00-.3 1.1l1.6 2.8a.8.8 0 001.1.3l1.6-.9a7 7 0 002 1.2v1.8c0 .4.4.8.8.8h3.2c.4 0 .8-.4.8-.8v-1.8a7 7 0 002-1.2l1.6.9a.8.8 0 001.1-.3l1.6-2.8a.8.8 0 00-.3-1.1z" opacity=".55"/></svg></div>
+        <div class="screen-body">
+          <p class="screen-sentence" data-card-sentence><span class="initial" aria-hidden="true">Y</span><span class="visually-hidden">Y</span>our pace is allowed to be your own.</p>
+          <p class="screen-date" data-today>Wednesday, August 5</p>
+        </div>
+      </div>
+    </div>
+        <div class="device" id="screen-bold" hidden>
+      <div class="device-screen screen-bold">
+        <div class="screen-top"><svg class="gear" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 8a4 4 0 100 8 4 4 0 000-8zm0 6.2A2.2 2.2 0 1112 9.8a2.2 2.2 0 010 4.4z"/><path d="M20.3 13.1l-1.6-.9a6.9 6.9 0 000-2.4l1.6-.9a.8.8 0 00.3-1.1l-1.6-2.8a.8.8 0 00-1.1-.3l-1.6.9a7 7 0 00-2-1.2V2.6a.8.8 0 00-.8-.8h-3.2a.8.8 0 00-.8.8v1.8a7 7 0 00-2 1.2l-1.6-.9a.8.8 0 00-1.1.3L3.2 7.8a.8.8 0 00.3 1.1l1.6.9a6.9 6.9 0 000 2.4l-1.6.9a.8.8 0 00-.3 1.1l1.6 2.8a.8.8 0 001.1.3l1.6-.9a7 7 0 002 1.2v1.8c0 .4.4.8.8.8h3.2c.4 0 .8-.4.8-.8v-1.8a7 7 0 002-1.2l1.6.9a.8.8 0 001.1-.3l1.6-2.8a.8.8 0 00-.3-1.1z" opacity=".55"/></svg></div>
+        <div class="screen-body">
+          <div class="slab"><p class="screen-sentence" data-card-sentence>You don&#8217;t have to carry all of it today.</p></div>
+          <p class="screen-date" data-today>Wednesday, August 5</p>
+        </div>
+      </div>
+    </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap rule-top">
+    <div class="section-head">
+      <h2>What&#8217;s in it</h2>
+      <p>Everything the app does today, in full. There is no longer list
+        somewhere else.</p>
+    </div>
+    <div class="grid-features">
+      <div class="feature">
+        <span class="metric">120</span>
+        <h3>Sentences, written not generated</h3>
+        <p>A curated set in positive language: nothing to fight, nothing to
+          beat. The catalogue runs through all 120 days without repeating.</p>
+      </div>
+      <div class="feature">
+        <span class="metric">1</span>
+        <h3>Notification a day</h3>
+        <p>At the time you choose. The same sentence for everyone on the same
+          day, decided by the date rather than by an algorithm.</p>
+      </div>
+      <div class="feature">
+        <span class="metric">64</span>
+        <h3>Days scheduled ahead</h3>
+        <p>Your sentence still arrives if you don&#8217;t open the app for
+          weeks. When the buffer runs low, the app says so instead of going
+          quiet.</p>
+      </div>
+      <div class="feature">
+        <h3>English and German</h3>
+        <p>Every sentence exists in both, written rather than translated. The
+          app follows the language your phone is set to.</p>
+      </div>
+      <div class="feature">
+        <h3>Light and dark</h3>
+        <p>Each style has its own dark version, drawn rather than inverted. Or
+          pin one mode instead of following the system.</p>
+      </div>
+      <div class="feature">
+        <h3>Type that scales</h3>
+        <p>Full support for Dynamic Type and Reduced Motion. The sentence stays
+          on one screen at every size.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap rule-top">
+    <div class="section-head">
+      <h2>What it doesn&#8217;t do</h2>
+      <p>The list matters as much as the one above it.</p>
+    </div>
+    <ul class="negatives">
+      <li>No streaks, and no reminders about reminders</li>
+      <li>No feed, no endless scrolling</li>
+      <li>No account, no sign-up</li>
+      <li>No ads, no promotions for other apps</li>
+      <li>No analytics, no tracking</li>
+      <li>No network calls at all</li>
+    </ul>
+  </div>
+</section>
+
+<section class="band">
+  <div class="wrap band-grid">
+    <h2>Nothing is collected, because nothing is taken.</h2>
+    <div>
+      <p>The sentences ship with the app. Your time, your language and your
+        style stay in local storage on your device. Notifications are scheduled
+        by iOS, on the device, so no one &mdash; including us &mdash; can see
+        whether one was delivered or opened.</p>
+      <p>There is no server to hold your data and no account to delete. Removing
+        the app removes everything alright ever stored.</p>
+      <p><a href="privacy/">Read the privacy policy</a></p>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>What&#8217;s next</h2>
+      <p>Ideas being weighed after the App Store release. No dates, and nothing
+        here will make the app louder.</p>
+    </div>
+    <div class="cards">
+      <div class="card-quiet">
+        <span class="tag">Considering</span>
+        <h3>A home screen widget</h3>
+        <p>The sentence of the day without opening anything. The Bold style is
+          the one that would carry across a home screen.</p>
+      </div>
+      <div class="card-quiet">
+        <span class="tag">Considering</span>
+        <h3>Keeping a sentence</h3>
+        <p>A way to hold on to the ones that landed, without turning the app
+          into a collection to maintain.</p>
+      </div>
+      <div class="card-quiet">
+        <span class="tag">Considering</span>
+        <h3>A sentence for every day of the year</h3>
+        <p>The catalogue currently covers 120 days. Writing it out to 365 is
+          editorial work, not engineering.</p>
+      </div>
+    </div>
+    <p class="note">These are candidates, not commitments. What ships first is
+      version one, exactly as described above.</p>
+    <a class="link-more" href="whats-next/">All of what&#8217;s next &rarr;</a>
+  </div>
+</section>
 </main>
 
 <footer class="site-footer">
-  <div class="footer-inner">
-    <p class="footer-mark">
-      <svg class="logo" viewBox="0 0 765 205" fill="currentColor" role="img" aria-label="alright" xmlns="http://www.w3.org/2000/svg">
-      <path d="M50.82 160.6C41.2867 160.6 32.6333 158.18 24.86 153.34C17.2333 148.5 11.1467 141.973 6.6 133.76C2.2 125.4 0 116.087 0 105.82C0 95.4068 2.2 86.0934 6.6 77.8801C11.1467 69.5201 17.2333 62.9201 24.86 58.0801C32.6333 53.0934 41.2867 50.6001 50.82 50.6001C58.8867 50.6001 66 52.3601 72.16 55.8801C78.4667 59.2534 83.4533 63.9468 87.12 69.9601C90.7867 75.9734 92.62 82.7934 92.62 90.4201V120.78C92.62 128.407 90.7867 135.227 87.12 141.24C83.6 147.253 78.6867 152.02 72.38 155.54C66.0733 158.913 58.8867 160.6 50.82 160.6ZM54.78 137.72C63.7267 137.72 70.9133 134.713 76.34 128.7C81.9133 122.687 84.7 114.987 84.7 105.6C84.7 99.2934 83.4533 93.7201 80.96 88.8801C78.4667 84.0401 74.9467 80.3001 70.4 77.6601C66 74.8734 60.7933 73.4801 54.78 73.4801C48.9133 73.4801 43.7067 74.8734 39.16 77.6601C34.76 80.3001 31.24 84.0401 28.6 88.8801C26.1067 93.7201 24.86 99.2934 24.86 105.6C24.86 111.907 26.1067 117.48 28.6 122.32C31.24 127.16 34.76 130.973 39.16 133.76C43.7067 136.4 48.9133 137.72 54.78 137.72ZM83.16 158.4V130.02L87.34 104.28L83.16 78.7601V52.8001H107.36V158.4H83.16Z"/>
-      <path d="M140.817 158.4V9.34601e-05H165.017V79.2001V158.4H140.817Z"/>
-      <path d="M285.072 158.4V52.8001H309.272V158.4H285.072ZM309.272 99.6601L300.912 95.4801C300.912 82.1334 303.845 71.3534 309.712 63.1401C315.725 54.7801 324.745 50.6001 336.772 50.6001C342.052 50.6001 346.819 51.5534 351.072 53.4601C355.325 55.3668 359.285 58.4468 362.952 62.7001L347.112 78.9801C345.205 76.9268 343.079 75.4601 340.732 74.5801C338.385 73.7001 335.672 73.2601 332.592 73.2601C325.845 73.2601 320.272 75.3868 315.872 79.6401C311.472 83.8934 309.272 90.5668 309.272 99.6601Z"/>
-      <path d="M381.482 158.4V52.8001H405.682V158.4H381.482ZM393.582 33.4401C389.475 33.4401 386.028 32.0468 383.242 29.2601C380.602 26.4734 379.282 23.0268 379.282 18.9201C379.282 14.8134 380.602 11.3668 383.242 8.58009C386.028 5.79342 389.475 4.40009 393.582 4.40009C397.835 4.40009 401.282 5.79342 403.922 8.58009C406.562 11.3668 407.882 14.8134 407.882 18.9201C407.882 23.0268 406.562 26.4734 403.922 29.2601C401.282 32.0468 397.835 33.4401 393.582 33.4401Z"/>
-      <path d="M483.424 204.6C472.278 204.6 462.524 202.547 454.164 198.44C445.804 194.48 439.058 188.833 433.924 181.5L449.764 165.66C454.018 170.94 458.858 174.9 464.284 177.54C469.711 180.18 476.238 181.5 483.864 181.5C493.398 181.5 500.951 179.007 506.524 174.02C512.098 169.18 514.884 162.507 514.884 154V128.04L519.064 104.72L514.884 81.1801V52.8001H539.084V154C539.084 164.12 536.738 172.92 532.044 180.4C527.351 188.027 520.824 193.967 512.464 198.22C504.104 202.473 494.424 204.6 483.424 204.6ZM482.324 156.2C472.938 156.2 464.431 153.927 456.804 149.38C449.324 144.687 443.384 138.307 438.984 130.24C434.731 122.173 432.604 113.153 432.604 103.18C432.604 93.2068 434.731 84.2601 438.984 76.3401C443.384 68.4201 449.324 62.1868 456.804 57.6401C464.431 52.9468 472.938 50.6001 482.324 50.6001C490.684 50.6001 498.018 52.2868 504.324 55.6601C510.631 59.0334 515.544 63.7268 519.064 69.7401C522.584 75.6068 524.344 82.5001 524.344 90.4201V116.38C524.344 124.153 522.511 131.047 518.844 137.06C515.324 143.073 510.411 147.767 504.104 151.14C497.798 154.513 490.538 156.2 482.324 156.2ZM487.164 133.32C493.031 133.32 498.164 132.073 502.564 129.58C506.964 127.087 510.338 123.64 512.684 119.24C515.178 114.693 516.424 109.413 516.424 103.4C516.424 97.3868 515.178 92.1801 512.684 87.7801C510.338 83.2334 506.964 79.7134 502.564 77.2201C498.164 74.7268 493.031 73.4801 487.164 73.4801C481.298 73.4801 476.091 74.7268 471.544 77.2201C467.144 79.7134 463.698 83.2334 461.204 87.7801C458.711 92.1801 457.464 97.3868 457.464 103.4C457.464 109.267 458.711 114.473 461.204 119.02C463.698 123.567 467.144 127.087 471.544 129.58C476.091 132.073 481.298 133.32 487.164 133.32Z"/>
-      <path d="M644.947 158.4V97.4601C644.947 90.4201 642.674 84.6268 638.127 80.0801C633.727 75.5334 628.007 73.2601 620.967 73.2601C616.274 73.2601 612.094 74.2868 608.427 76.3401C604.761 78.3934 601.901 81.2534 599.847 84.9201C597.794 88.5868 596.767 92.7668 596.767 97.4601L587.307 92.1801C587.307 84.1134 589.067 77.0001 592.587 70.8401C596.107 64.5334 600.947 59.6201 607.107 56.1001C613.414 52.4334 620.454 50.6001 628.227 50.6001C636.147 50.6001 643.187 52.3601 649.347 55.8801C655.507 59.4001 660.347 64.3134 663.867 70.6201C667.387 76.7801 669.147 83.9668 669.147 92.1801V158.4H644.947ZM572.567 158.4V9.34601e-05H596.767V158.4H572.567Z"/>
-      <path d="M715.11 158.4V8.8001H739.31V158.4H715.11ZM689.81 74.8001V52.8001H764.61V74.8001H689.81Z"/>
-      <path d="M189.835 150.109L244.252 1.34982L266.98 9.66362L239.771 84.0432L212.562 158.423L189.835 150.109Z"/>
-      </svg>
-    </p>
-    <p class="footer-tagline">Everything&#8217;s alright.</p>
+  <div class="wrap">
+    <div class="footer-top">
+      <div>
+        <p class="footer-mark">
+          <svg class="logo" viewBox="0 0 765 205" fill="currentColor" role="img" aria-label="alright" xmlns="http://www.w3.org/2000/svg">
+          <path d="M50.82 160.6C41.2867 160.6 32.6333 158.18 24.86 153.34C17.2333 148.5 11.1467 141.973 6.6 133.76C2.2 125.4 0 116.087 0 105.82C0 95.4068 2.2 86.0934 6.6 77.8801C11.1467 69.5201 17.2333 62.9201 24.86 58.0801C32.6333 53.0934 41.2867 50.6001 50.82 50.6001C58.8867 50.6001 66 52.3601 72.16 55.8801C78.4667 59.2534 83.4533 63.9468 87.12 69.9601C90.7867 75.9734 92.62 82.7934 92.62 90.4201V120.78C92.62 128.407 90.7867 135.227 87.12 141.24C83.6 147.253 78.6867 152.02 72.38 155.54C66.0733 158.913 58.8867 160.6 50.82 160.6ZM54.78 137.72C63.7267 137.72 70.9133 134.713 76.34 128.7C81.9133 122.687 84.7 114.987 84.7 105.6C84.7 99.2934 83.4533 93.7201 80.96 88.8801C78.4667 84.0401 74.9467 80.3001 70.4 77.6601C66 74.8734 60.7933 73.4801 54.78 73.4801C48.9133 73.4801 43.7067 74.8734 39.16 77.6601C34.76 80.3001 31.24 84.0401 28.6 88.8801C26.1067 93.7201 24.86 99.2934 24.86 105.6C24.86 111.907 26.1067 117.48 28.6 122.32C31.24 127.16 34.76 130.973 39.16 133.76C43.7067 136.4 48.9133 137.72 54.78 137.72ZM83.16 158.4V130.02L87.34 104.28L83.16 78.7601V52.8001H107.36V158.4H83.16Z"/>
+          <path d="M140.817 158.4V9.34601e-05H165.017V79.2001V158.4H140.817Z"/>
+          <path d="M285.072 158.4V52.8001H309.272V158.4H285.072ZM309.272 99.6601L300.912 95.4801C300.912 82.1334 303.845 71.3534 309.712 63.1401C315.725 54.7801 324.745 50.6001 336.772 50.6001C342.052 50.6001 346.819 51.5534 351.072 53.4601C355.325 55.3668 359.285 58.4468 362.952 62.7001L347.112 78.9801C345.205 76.9268 343.079 75.4601 340.732 74.5801C338.385 73.7001 335.672 73.2601 332.592 73.2601C325.845 73.2601 320.272 75.3868 315.872 79.6401C311.472 83.8934 309.272 90.5668 309.272 99.6601Z"/>
+          <path d="M381.482 158.4V52.8001H405.682V158.4H381.482ZM393.582 33.4401C389.475 33.4401 386.028 32.0468 383.242 29.2601C380.602 26.4734 379.282 23.0268 379.282 18.9201C379.282 14.8134 380.602 11.3668 383.242 8.58009C386.028 5.79342 389.475 4.40009 393.582 4.40009C397.835 4.40009 401.282 5.79342 403.922 8.58009C406.562 11.3668 407.882 14.8134 407.882 18.9201C407.882 23.0268 406.562 26.4734 403.922 29.2601C401.282 32.0468 397.835 33.4401 393.582 33.4401Z"/>
+          <path d="M483.424 204.6C472.278 204.6 462.524 202.547 454.164 198.44C445.804 194.48 439.058 188.833 433.924 181.5L449.764 165.66C454.018 170.94 458.858 174.9 464.284 177.54C469.711 180.18 476.238 181.5 483.864 181.5C493.398 181.5 500.951 179.007 506.524 174.02C512.098 169.18 514.884 162.507 514.884 154V128.04L519.064 104.72L514.884 81.1801V52.8001H539.084V154C539.084 164.12 536.738 172.92 532.044 180.4C527.351 188.027 520.824 193.967 512.464 198.22C504.104 202.473 494.424 204.6 483.424 204.6ZM482.324 156.2C472.938 156.2 464.431 153.927 456.804 149.38C449.324 144.687 443.384 138.307 438.984 130.24C434.731 122.173 432.604 113.153 432.604 103.18C432.604 93.2068 434.731 84.2601 438.984 76.3401C443.384 68.4201 449.324 62.1868 456.804 57.6401C464.431 52.9468 472.938 50.6001 482.324 50.6001C490.684 50.6001 498.018 52.2868 504.324 55.6601C510.631 59.0334 515.544 63.7268 519.064 69.7401C522.584 75.6068 524.344 82.5001 524.344 90.4201V116.38C524.344 124.153 522.511 131.047 518.844 137.06C515.324 143.073 510.411 147.767 504.104 151.14C497.798 154.513 490.538 156.2 482.324 156.2ZM487.164 133.32C493.031 133.32 498.164 132.073 502.564 129.58C506.964 127.087 510.338 123.64 512.684 119.24C515.178 114.693 516.424 109.413 516.424 103.4C516.424 97.3868 515.178 92.1801 512.684 87.7801C510.338 83.2334 506.964 79.7134 502.564 77.2201C498.164 74.7268 493.031 73.4801 487.164 73.4801C481.298 73.4801 476.091 74.7268 471.544 77.2201C467.144 79.7134 463.698 83.2334 461.204 87.7801C458.711 92.1801 457.464 97.3868 457.464 103.4C457.464 109.267 458.711 114.473 461.204 119.02C463.698 123.567 467.144 127.087 471.544 129.58C476.091 132.073 481.298 133.32 487.164 133.32Z"/>
+          <path d="M644.947 158.4V97.4601C644.947 90.4201 642.674 84.6268 638.127 80.0801C633.727 75.5334 628.007 73.2601 620.967 73.2601C616.274 73.2601 612.094 74.2868 608.427 76.3401C604.761 78.3934 601.901 81.2534 599.847 84.9201C597.794 88.5868 596.767 92.7668 596.767 97.4601L587.307 92.1801C587.307 84.1134 589.067 77.0001 592.587 70.8401C596.107 64.5334 600.947 59.6201 607.107 56.1001C613.414 52.4334 620.454 50.6001 628.227 50.6001C636.147 50.6001 643.187 52.3601 649.347 55.8801C655.507 59.4001 660.347 64.3134 663.867 70.6201C667.387 76.7801 669.147 83.9668 669.147 92.1801V158.4H644.947ZM572.567 158.4V9.34601e-05H596.767V158.4H572.567Z"/>
+          <path d="M715.11 158.4V8.8001H739.31V158.4H715.11ZM689.81 74.8001V52.8001H764.61V74.8001H689.81Z"/>
+          <path d="M189.835 150.109L244.252 1.34982L266.98 9.66362L239.771 84.0432L212.562 158.423L189.835 150.109Z"/>
+          </svg>
+        </p>
+        <p class="footer-tagline">Everything&#8217;s alright.</p>
+      </div>
+      <div class="footer-col">
+        <h2>The app</h2>
+        <ul>
+          <li><a href="./">Home</a></li>
+          <li><a href="design/">Design</a></li>
+          <li><a href="whats-next/">What&#8217;s next</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h2>Legal</h2>
+        <ul>
+          <li><a href="support/">Support</a></li>
+          <li><a href="privacy/">Privacy Policy</a></li>
+          <li><a href="mailto:alrightapp@icloud.com">alrightapp@icloud.com</a></li>
+        </ul>
+      </div>
+    </div>
     <div class="footer-bottom">
-      <p class="footer-copy">© 2026 Lisanne Visser</p>
-      <nav class="footer-links">
-        <a href="support/">Support</a>
-        <a href="privacy/">Privacy Policy</a>
-        <a href="de/">Deutsch</a>
-      </nav>
+      <p>© 2026 Lisanne Visser</p>
+      <p><a href="de/">Deutsch</a></p>
     </div>
   </div>
 </footer>
+<script src="assets/site.js"></script>
 </body>
 </html>

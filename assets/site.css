@@ -1,0 +1,664 @@
+/* alright — website styles
+   One stylesheet for every page. No build step: this file is linked directly.
+
+   Sections in order:
+   1. Tokens        2. Base + layout      3. Site chrome (header, footer)
+   4. Sections      5. The device/card    6. The three styles
+   7. Prose pages   8. Utilities
+*/
+
+/* ------------------------------------------------------------------ 1. Tokens */
+
+:root {
+  color-scheme: light dark;
+
+  /* Page */
+  --bg: #faf9f6;
+  --bg-raised: #ffffff;
+  --ink: #16140f;
+  --muted: #5c584e;
+  --rule: rgba(22, 20, 15, 0.12);
+  --rule-strong: rgba(22, 20, 15, 0.22);
+  --footer-bg: #efece3;
+  --shadow-soft: 0 24px 60px rgba(22, 20, 15, 0.10);
+  --shadow-lift: 0 2px 4px rgba(22, 20, 15, 0.04), 0 14px 40px rgba(22, 20, 15, 0.07);
+
+  /* The app's own palettes, measured from the code that draws them.
+     Clean: Brand.swift · Editorial + Bold: ThemeStyle.swift */
+  --clean-paper: #ffffff;
+  --clean-ink: #111417;
+  --clean-chrome: #3a4a5a;
+
+  --editorial-paper: #f7f4ee;
+  --editorial-ink: #1a1714;
+  --editorial-accent: #1b2fa8;
+
+  --bold-ground: #e8ff3c;
+  --bold-slab: #ffffff;
+  --bold-ink: #0a0a0a;
+  --bold-shadow: #0a0a0a;
+  --bold-date: #0a0a0a;
+
+  /* Rhythm */
+  --measure: 62ch;
+  --page: 1120px;
+  --gap-section: clamp(4.5rem, 9vw, 8rem);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #121109;
+    --bg-raised: #1b1810;
+    --ink: #f6f4ee;
+    --muted: #b3ae9e;
+    --rule: rgba(246, 244, 238, 0.14);
+    --rule-strong: rgba(246, 244, 238, 0.28);
+    --footer-bg: #1b1810;
+    --shadow-soft: 0 24px 60px rgba(0, 0, 0, 0.45);
+    --shadow-lift: 0 2px 4px rgba(0, 0, 0, 0.3), 0 14px 40px rgba(0, 0, 0, 0.35);
+
+    /* Each style has its own dark recipe in the app — not an inversion of the
+       light one. Bold is the clearest case: acid becomes the slab and the hard
+       shadow turns white, because black on black would erase the style. */
+    --clean-paper: #111417;
+    --clean-ink: #f5f5f0;
+    --clean-chrome: #8fa0b0;
+
+    --editorial-paper: #161310;
+    --editorial-ink: #f1ebe1;
+    --editorial-accent: #8fa2f5;
+
+    --bold-ground: #0a0a0a;
+    --bold-slab: #e8ff3c;
+    --bold-ink: #0a0a0a;
+    --bold-shadow: #ffffff;
+    /* The date sits outside the slab, on the black ground: it needs white,
+       not the slab's ink, or it disappears. */
+    --bold-date: #ffffff;
+  }
+}
+
+/* Archivo Black is the typeface the app sets the Bold style in (OFL, bundled
+   with the app). It is loaded here so the style preview shows the real thing
+   rather than a stand-in. Everything else on this site is system type. */
+@font-face {
+  font-family: "Archivo Black";
+  src: url("fonts/ArchivoBlack-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ------------------------------------------------------- 2. Base and layout */
+
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+html, body { margin: 0; padding: 0; }
+
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-size: 1.0625rem;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+.wrap {
+  width: 100%;
+  max-width: var(--page);
+  margin: 0 auto;
+  padding-inline: clamp(1.25rem, 5vw, 3rem);
+}
+
+a {
+  color: inherit;
+  text-decoration-color: var(--rule-strong);
+  text-underline-offset: 3px;
+}
+a:hover { text-decoration-color: currentColor; }
+
+:where(a, button, summary, [tabindex]):focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+h1, h2, h3 {
+  letter-spacing: -0.025em;
+  line-height: 1.12;
+  text-wrap: balance;
+  margin: 0;
+}
+
+.eyebrow {
+  margin: 0 0 1.25rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.lede {
+  font-size: clamp(1.1rem, 2.2vw, 1.3rem);
+  line-height: 1.5;
+  color: var(--muted);
+  max-width: 44ch;
+  margin: 0;
+}
+
+/* ------------------------------------------------------------ 3. Site chrome */
+
+.site-header {
+  position: relative;
+  z-index: 2;
+  padding-block: 1.5rem;
+}
+.site-header .wrap {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem 2rem;
+}
+.brand { display: inline-flex; line-height: 0; }
+.brand .logo { display: block; height: 20px; width: auto; }
+
+.site-nav {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 1.25rem 1.75rem;
+  font-size: 0.95rem;
+}
+.site-nav a {
+  color: var(--muted);
+  text-decoration: none;
+  padding-bottom: 2px;
+  border-bottom: 1px solid transparent;
+}
+.site-nav a:hover { color: var(--ink); border-bottom-color: var(--rule-strong); }
+.site-nav a[aria-current="page"] { color: var(--ink); border-bottom-color: currentColor; }
+.site-nav .nav-lang { color: var(--muted); }
+
+main { display: block; }
+
+.site-footer {
+  background: var(--footer-bg);
+  border-top: 1px solid var(--rule);
+  color: var(--muted);
+  font-size: 0.95rem;
+  margin-top: var(--gap-section);
+}
+.site-footer .wrap { padding-block: clamp(3rem, 6vw, 4.5rem); }
+.footer-top {
+  display: grid;
+  gap: 2.5rem;
+  align-items: start;
+}
+@media (min-width: 760px) {
+  .footer-top { grid-template-columns: 1.4fr 1fr 1fr; gap: 3rem; }
+}
+.footer-mark { margin: 0 0 0.75rem; line-height: 0; color: var(--ink); }
+.footer-mark .logo { display: block; height: 22px; width: auto; }
+.footer-tagline { margin: 0; color: var(--ink); letter-spacing: -0.01em; }
+.footer-col h2 {
+  font-size: 0.78rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-weight: 600;
+  margin: 0 0 0.75rem;
+  color: var(--muted);
+}
+.footer-col ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.5rem; }
+.site-footer a {
+  color: var(--muted);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  padding-bottom: 2px;
+}
+.site-footer a:hover { color: var(--ink); border-bottom-color: currentColor; }
+.footer-bottom {
+  margin-top: 3rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--rule);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.5rem;
+  justify-content: space-between;
+  font-size: 0.85rem;
+}
+.footer-bottom p { margin: 0; }
+
+/* --------------------------------------------------------------- 4. Sections */
+
+.section { padding-block: var(--gap-section); }
+.section + .section { padding-top: 0; }
+.section-head { max-width: 38ch; margin-bottom: clamp(2.5rem, 5vw, 3.5rem); }
+.section-head h2 { font-size: clamp(1.8rem, 3.6vw, 2.6rem); }
+.section-head p { margin: 1rem 0 0; color: var(--muted); max-width: 46ch; }
+.rule-top { border-top: 1px solid var(--rule); padding-top: clamp(3rem, 6vw, 4.5rem); }
+
+/* Hero */
+.hero { padding-block: clamp(2.5rem, 6vw, 5rem) clamp(4rem, 8vw, 7rem); }
+.hero-grid {
+  display: grid;
+  gap: clamp(3rem, 6vw, 4.5rem);
+  align-items: center;
+}
+@media (min-width: 900px) {
+  .hero-grid { grid-template-columns: 1.15fr 0.85fr; gap: 4.5rem; }
+}
+.hero h1 {
+  font-size: clamp(2.5rem, 6.4vw, 4.25rem);
+  font-weight: 600;
+  letter-spacing: -0.035em;
+  margin: 0 0 1.25rem;
+}
+.hero .lede { margin-bottom: 2rem; }
+
+.status {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.5rem 1rem 0.5rem 0.85rem;
+  border: 1px solid var(--rule-strong);
+  border-radius: 999px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.status::before {
+  content: "";
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: currentColor;
+  opacity: 0.55;
+}
+
+.hero-facts {
+  margin: 2.5rem 0 0;
+  padding: 1.25rem 0 0;
+  border-top: 1px solid var(--rule);
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  /* No dot separators: they dangle at the start of a line as soon as the list
+     wraps, which it does on a phone. Space does the same work. */
+  gap: 0.5rem 2.25rem;
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
+/* Pull quote: the one loud line on the page */
+.statement { padding-block: var(--gap-section); }
+.statement blockquote {
+  margin: 0;
+  font-size: clamp(1.6rem, 4.4vw, 3rem);
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  line-height: 1.15;
+  max-width: 22ch;
+}
+.statement .attribution { margin: 1.75rem 0 0; color: var(--muted); max-width: 52ch; }
+
+/* Numbered steps */
+.steps { display: grid; gap: 2.5rem; counter-reset: step; }
+@media (min-width: 780px) { .steps { grid-template-columns: repeat(3, 1fr); gap: 3rem; } }
+.step { counter-increment: step; }
+.step::before {
+  content: counter(step, decimal-leading-zero);
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  color: var(--muted);
+  margin-bottom: 1rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--rule);
+}
+.step h3 { font-size: 1.2rem; margin: 0 0 0.5rem; }
+.step p { margin: 0; color: var(--muted); }
+
+/* Feature grid */
+.grid-features { display: grid; gap: 2rem; }
+@media (min-width: 640px) { .grid-features { grid-template-columns: repeat(2, 1fr); gap: 2rem; } }
+@media (min-width: 960px) { .grid-features { grid-template-columns: repeat(3, 1fr); gap: 2.5rem 3rem; } }
+.feature {
+  background: var(--bg-raised);
+  border: 1px solid var(--rule);
+  border-radius: 18px;
+  padding: 1.75rem;
+  box-shadow: var(--shadow-lift);
+}
+.feature h3 { font-size: 1.1rem; margin: 0 0 0.5rem; letter-spacing: -0.015em; }
+.feature p { margin: 0; color: var(--muted); font-size: 0.98rem; }
+.feature .metric {
+  display: block;
+  font-size: 2.25rem;
+  font-weight: 600;
+  letter-spacing: -0.04em;
+  line-height: 1;
+  margin-bottom: 0.75rem;
+}
+
+/* The "what it doesn't do" list */
+.negatives { display: grid; gap: 0.25rem; list-style: none; margin: 0; padding: 0; }
+@media (min-width: 700px) { .negatives { grid-template-columns: repeat(2, 1fr); column-gap: 3rem; } }
+.negatives li {
+  display: flex;
+  align-items: baseline;
+  gap: 1rem;
+  padding: 0.9rem 0;
+  border-bottom: 1px solid var(--rule);
+  font-size: 1.05rem;
+}
+.negatives li::before {
+  content: "—";
+  color: var(--muted);
+  flex: none;
+}
+
+/* Quiet cards, used for what's-next items */
+.cards { display: grid; gap: 1.25rem; }
+@media (min-width: 760px) { .cards { grid-template-columns: repeat(3, 1fr); gap: 1.5rem; } }
+.card-quiet {
+  border: 1px solid var(--rule);
+  border-radius: 18px;
+  padding: 1.5rem;
+}
+.card-quiet h3 { font-size: 1.05rem; margin: 0.75rem 0 0.4rem; }
+.card-quiet p { margin: 0; color: var(--muted); font-size: 0.96rem; }
+.tag {
+  display: inline-block;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  border: 1px solid var(--rule-strong);
+  border-radius: 999px;
+  padding: 0.2rem 0.6rem;
+}
+
+.note {
+  margin: 2rem 0 0;
+  color: var(--muted);
+  font-size: 0.95rem;
+  max-width: 60ch;
+}
+
+.link-more {
+  display: inline-block;
+  margin-top: 2rem;
+  font-weight: 600;
+  text-decoration: none;
+  border-bottom: 1px solid var(--rule-strong);
+  padding-bottom: 2px;
+}
+.link-more:hover { border-bottom-color: currentColor; }
+
+/* A calm full-width band, used for the privacy statement */
+.band {
+  background: var(--footer-bg);
+  border-block: 1px solid var(--rule);
+  padding-block: clamp(3.5rem, 7vw, 5.5rem);
+  margin-top: var(--gap-section);
+}
+.band-grid { display: grid; gap: 2rem; align-items: start; }
+@media (min-width: 860px) { .band-grid { grid-template-columns: 1fr 1fr; gap: 4rem; } }
+.band h2 { font-size: clamp(1.6rem, 3.2vw, 2.2rem); max-width: 16ch; }
+.band p { margin: 0 0 1rem; color: var(--muted); }
+.band p:last-child { margin-bottom: 0; }
+
+/* ------------------------------------------------------- 5. Device and card */
+
+/* The phone is drawn, not photographed: it stays sharp at any size, follows
+   dark mode, and never goes out of date with the next device generation. */
+.device {
+  position: relative;
+  width: 100%;
+  max-width: 300px;
+  margin-inline: auto;
+  aspect-ratio: 41 / 84;
+  border-radius: 44px;
+  padding: 10px;
+  background: var(--bg-raised);
+  border: 1px solid var(--rule-strong);
+  box-shadow: var(--shadow-soft);
+}
+.device-screen {
+  height: 100%;
+  border-radius: 35px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  background: var(--clean-paper);
+  color: var(--clean-ink);
+}
+.screen-top {
+  display: flex;
+  justify-content: flex-end;
+  padding: 1.1rem 1.1rem 0;
+}
+.gear {
+  width: 18px;
+  height: 18px;
+  opacity: 0.55;
+  fill: currentColor;
+}
+.screen-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  padding: 1.5rem 1.4rem 2.5rem;
+  text-align: center;
+}
+.screen-sentence {
+  margin: 0;
+  font-size: clamp(1.05rem, 3.6vw, 1.25rem);
+  font-weight: 500;
+  line-height: 1.32;
+  letter-spacing: -0.015em;
+  text-wrap: balance;
+}
+.screen-date {
+  margin: 0;
+  font-size: 0.72rem;
+  letter-spacing: 0.01em;
+  color: var(--clean-chrome);
+}
+
+.device-caption {
+  margin: 1.25rem 0 0;
+  text-align: center;
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+/* The card-flip control: interaction only, never automatic — the page is
+   supposed to sit still. Injected by site.js, so it is absent without it. */
+.card-nudge {
+  display: block;
+  margin: 1rem auto 0;
+  background: none;
+  border: 1px solid var(--rule-strong);
+  border-radius: 999px;
+  color: var(--muted);
+  font: inherit;
+  font-size: 0.85rem;
+  padding: 0.4rem 1rem;
+  cursor: pointer;
+}
+.card-nudge:hover { color: var(--ink); border-color: currentColor; }
+
+/* ------------------------------------------------------- 6. The three styles */
+
+.styles-layout { display: grid; gap: 2.5rem; align-items: start; }
+@media (min-width: 900px) { .styles-layout { grid-template-columns: 0.9fr 1.1fr; gap: 4rem; } }
+
+.style-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 2rem;
+}
+.style-tab {
+  font: inherit;
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  padding: 0.5rem 1.1rem;
+  border-radius: 999px;
+  border: 1px solid var(--rule-strong);
+  background: none;
+  color: var(--muted);
+  cursor: pointer;
+}
+.style-tab[aria-selected="true"] {
+  background: var(--ink);
+  border-color: var(--ink);
+  color: var(--bg);
+}
+.style-panel h3 { font-size: 1.25rem; margin: 0 0 0.6rem; }
+.style-panel p { margin: 0 0 1rem; color: var(--muted); max-width: 46ch; }
+.style-panel dl {
+  margin: 1.5rem 0 0;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.5rem 1.5rem;
+  font-size: 0.92rem;
+}
+.style-panel dt { color: var(--muted); }
+.style-panel dd { margin: 0; }
+/* Without JS every panel is simply visible, one after another. */
+.js .style-panel[hidden] { display: none; }
+
+/* Clean: paper, system type, centred. The default. */
+.screen-clean { background: var(--clean-paper); color: var(--clean-ink); }
+.screen-clean .screen-date { color: var(--clean-chrome); }
+
+/* Editorial: ivory, serif, a raised initial in ultramarine that the first
+   lines set around. The app computes the cap size from the leading; here the
+   proportion is matched by eye at one size. */
+.screen-editorial { background: var(--editorial-paper); color: var(--editorial-ink); }
+.screen-editorial .screen-body {
+  align-items: stretch;
+  justify-content: center;
+  text-align: left;
+  padding-inline: 1.6rem;
+}
+.screen-editorial .screen-sentence {
+  font-family: ui-serif, "New York", Georgia, "Times New Roman", serif;
+  font-weight: 300;
+  font-size: clamp(1.05rem, 3.4vw, 1.2rem);
+  line-height: 1.45;
+  letter-spacing: 0;
+  text-wrap: pretty;
+}
+.screen-editorial .initial {
+  float: left;
+  font-family: ui-serif, "New York", Georgia, "Times New Roman", serif;
+  font-weight: 300;
+  color: var(--editorial-accent);
+  font-size: 3.4em;
+  line-height: 0.78;
+  padding-right: 0.06em;
+  margin-top: -0.12em;
+}
+.screen-editorial .screen-date {
+  color: var(--editorial-accent);
+  text-align: left;
+  font-variant: small-caps;
+  letter-spacing: 0.08em;
+}
+
+/* Bold: an acid ground, a slab with a hard border and a hard offset shadow,
+   Archivo Black in capitals. Dark mode flips ground and slab instead of
+   inverting, exactly as the app does. */
+.screen-bold { background: var(--bold-ground); color: var(--bold-ink); }
+.screen-bold .screen-body { padding: 1.5rem 1.2rem 2rem; }
+.screen-bold .slab {
+  background: var(--bold-slab);
+  border: 4px solid var(--bold-ink);
+  box-shadow: 10px 10px 0 var(--bold-shadow);
+  padding: 1.1rem 0.9rem;
+}
+@media (prefers-color-scheme: dark) {
+  .screen-bold .slab { border-color: var(--bold-slab); }
+}
+.screen-bold .screen-sentence {
+  font-family: "Archivo Black", Impact, "Haettenschweiler", sans-serif;
+  font-weight: 400;
+  text-transform: uppercase;
+  font-size: clamp(1rem, 3.4vw, 1.2rem);
+  line-height: 1.06;
+  letter-spacing: -0.01em;
+  hyphens: auto;
+}
+.screen-bold .screen-date {
+  color: var(--bold-date);
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+/* ------------------------------------------------------------ 7. Prose pages */
+
+.page-head { padding-block: clamp(3rem, 7vw, 5rem) 0; }
+.page-head h1 {
+  font-size: clamp(2.2rem, 5.4vw, 3.4rem);
+  font-weight: 600;
+  letter-spacing: -0.035em;
+}
+.page-head .lede { margin-top: 1.25rem; max-width: 52ch; }
+.page-head .meta { margin: 1rem 0 0; color: var(--muted); font-size: 0.9rem; }
+
+.prose { max-width: var(--measure); padding-block: clamp(2.5rem, 5vw, 3.5rem) 0; }
+.prose section { margin-top: clamp(2.5rem, 5vw, 3.5rem); }
+.prose h2 { font-size: clamp(1.3rem, 2.6vw, 1.6rem); margin: 0 0 0.9rem; }
+.prose h3 { font-size: 1.1rem; margin: 2rem 0 0.5rem; }
+.prose p { margin: 0 0 1rem; }
+.prose ul, .prose ol { margin: 0 0 1rem; padding-left: 1.25rem; }
+.prose li { margin-bottom: 0.5rem; }
+.prose li::marker { color: var(--muted); }
+.prose .faq { margin: 0; }
+.prose .faq dt { font-weight: 600; margin-top: 1.5rem; }
+.prose .faq dd { margin: 0.35rem 0 0; color: var(--muted); }
+.prose .aside {
+  margin: 2rem 0;
+  padding: 1.25rem 1.5rem;
+  border-left: 2px solid var(--rule-strong);
+  color: var(--muted);
+  font-size: 0.98rem;
+}
+.prose .aside p:last-child { margin-bottom: 0; }
+
+/* --------------------------------------------------------------- 8. Utilities */
+
+.visually-hidden {
+  position: absolute;
+  width: 1px; height: 1px;
+  margin: -1px; padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
