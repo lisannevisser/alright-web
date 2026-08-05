@@ -44,8 +44,7 @@
       <h1>Ein Satz am Tag.</h1>
       <p class="lede">Eine leise Mitteilung zur Uhrzeit, die du wählst. Danach
         nichts bis morgen.</p>
-      <p class="status"><strong>Bald im App Store.</strong> Version eins ist
-        fertig und im Test.</p>
+      <button class="status-button" type="button" disabled>Bald im App Store</button>
     </div>
     <div>
       <div class="device">
@@ -127,92 +126,43 @@
   <div class="wrap rule-top">
     <div class="section-head">
       <h2>Drei Setzungen für denselben Satz</h2>
-      <p>Ein Katalog, drei typografische Fassungen. Umschalten, wann immer dir
-        danach ist &mdash; der Satz des Tages bleibt derselbe.</p>
+      <p>Ein Katalog, drei typografische Fassungen &mdash; der Satz des Tages
+        bleibt derselbe.</p>
     </div>
-    <div class="styles-layout">
-      <div class="style-tabs" role="tablist" aria-label="Design-Stile" data-style-tabs>
-        <button class="style-tab" type="button" role="tab" id="tab-clean"
-          aria-controls="panel-clean" data-screen="screen-clean" aria-selected="true">Clean</button>
-        <button class="style-tab" type="button" role="tab" id="tab-editorial"
-          aria-controls="panel-editorial" data-screen="screen-editorial" aria-selected="false">Editorial</button>
-        <button class="style-tab" type="button" role="tab" id="tab-bold"
-          aria-controls="panel-bold" data-screen="screen-bold" aria-selected="false">Bold</button>
-      </div>
-
-      <div class="style-preview">
-        <div class="device" id="screen-clean">
+    <div class="style-stage" data-style-stage data-interval="4500">
+      <figure class="style-shot">
+        <div class="device">
       <div class="device-screen screen-clean">
-        <div class="screen-top"><svg class="gear" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 8a4 4 0 100 8 4 4 0 000-8zm0 6.2A2.2 2.2 0 1112 9.8a2.2 2.2 0 010 4.4z"/><path d="M20.3 13.1l-1.6-.9a6.9 6.9 0 000-2.4l1.6-.9a.8.8 0 00.3-1.1l-1.6-2.8a.8.8 0 00-1.1-.3l-1.6.9a7 7 0 00-2-1.2V2.6a.8.8 0 00-.8-.8h-3.2a.8.8 0 00-.8.8v1.8a7 7 0 00-2 1.2l-1.6-.9a.8.8 0 00-1.1.3L3.2 7.8a.8.8 0 00.3 1.1l1.6.9a6.9 6.9 0 000 2.4l-1.6.9a.8.8 0 00-.3 1.1l1.6 2.8a.8.8 0 001.1.3l1.6-.9a7 7 0 002 1.2v1.8c0 .4.4.8.8.8h3.2c.4 0 .8-.4.8-.8v-1.8a7 7 0 002-1.2l1.6.9a.8.8 0 001.1-.3l1.6-2.8a.8.8 0 00-.3-1.1z" opacity=".55"/></svg></div>
         <div class="screen-body">
-          <p class="screen-sentence" data-card-sentence>Du musst heute nicht alles machen.</p>
+          <p class="screen-sentence">Du musst heute nicht alles machen.</p>
           <p class="screen-date" data-today>Mittwoch, 5. August</p>
         </div>
       </div>
     </div>
-        <div class="device" id="screen-editorial" hidden>
+        <figcaption>Clean</figcaption>
+      </figure>
+      <figure class="style-shot">
+        <div class="device">
       <div class="device-screen screen-editorial">
-        <div class="screen-top"><svg class="gear" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 8a4 4 0 100 8 4 4 0 000-8zm0 6.2A2.2 2.2 0 1112 9.8a2.2 2.2 0 010 4.4z"/><path d="M20.3 13.1l-1.6-.9a6.9 6.9 0 000-2.4l1.6-.9a.8.8 0 00.3-1.1l-1.6-2.8a.8.8 0 00-1.1-.3l-1.6.9a7 7 0 00-2-1.2V2.6a.8.8 0 00-.8-.8h-3.2a.8.8 0 00-.8.8v1.8a7 7 0 00-2 1.2l-1.6-.9a.8.8 0 00-1.1.3L3.2 7.8a.8.8 0 00.3 1.1l1.6.9a6.9 6.9 0 000 2.4l-1.6.9a.8.8 0 00-.3 1.1l1.6 2.8a.8.8 0 001.1.3l1.6-.9a7 7 0 002 1.2v1.8c0 .4.4.8.8.8h3.2c.4 0 .8-.4.8-.8v-1.8a7 7 0 002-1.2l1.6.9a.8.8 0 001.1-.3l1.6-2.8a.8.8 0 00-.3-1.1z" opacity=".55"/></svg></div>
         <div class="screen-body">
-          <p class="screen-sentence" data-card-sentence><span class="initial" aria-hidden="true">D</span><span class="visually-hidden">D</span>u musst heute nicht alles machen.</p>
+          <p class="screen-sentence"><span class="initial" aria-hidden="true">D</span><span class="visually-hidden">D</span>u musst heute nicht alles machen.</p>
           <p class="screen-date" data-today>Mittwoch, 5. August</p>
         </div>
       </div>
     </div>
-        <div class="device" id="screen-bold" hidden>
+        <figcaption>Editorial</figcaption>
+      </figure>
+      <figure class="style-shot">
+        <div class="device">
       <div class="device-screen screen-bold">
-        <div class="screen-top"><svg class="gear" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 8a4 4 0 100 8 4 4 0 000-8zm0 6.2A2.2 2.2 0 1112 9.8a2.2 2.2 0 010 4.4z"/><path d="M20.3 13.1l-1.6-.9a6.9 6.9 0 000-2.4l1.6-.9a.8.8 0 00.3-1.1l-1.6-2.8a.8.8 0 00-1.1-.3l-1.6.9a7 7 0 00-2-1.2V2.6a.8.8 0 00-.8-.8h-3.2a.8.8 0 00-.8.8v1.8a7 7 0 00-2 1.2l-1.6-.9a.8.8 0 00-1.1.3L3.2 7.8a.8.8 0 00.3 1.1l1.6.9a6.9 6.9 0 000 2.4l-1.6.9a.8.8 0 00-.3 1.1l1.6 2.8a.8.8 0 001.1.3l1.6-.9a7 7 0 002 1.2v1.8c0 .4.4.8.8.8h3.2c.4 0 .8-.4.8-.8v-1.8a7 7 0 002-1.2l1.6.9a.8.8 0 001.1-.3l1.6-2.8a.8.8 0 00-.3-1.1z" opacity=".55"/></svg></div>
         <div class="screen-body">
-          <div class="slab"><p class="screen-sentence" data-card-sentence>Du musst heute nicht alles machen.</p></div>
+          <div class="slab"><p class="screen-sentence">Du musst heute nicht alles machen.</p></div>
           <p class="screen-date" data-today>Mittwoch, 5. August</p>
         </div>
       </div>
     </div>
-      </div>
-
-      <div class="style-panels">
-        <div class="style-panel" id="panel-clean" role="tabpanel" aria-labelledby="tab-clean">
-          <h3>Clean</h3>
-          <p>Der Standard. Systemschrift auf Papierweiß, zentriert, sonst nichts
-            auf dem Bildschirm. Die Setzung, die dem Satz aus dem Weg geht.</p>
-          <dl>
-            <dt>Schrift</dt><dd>San Francisco, die Systemschrift</dd>
-            <dt>Papier</dt><dd>Weiß, Schrift fast schwarz</dd>
-            <dt>Für</dt><dd>Jeden Tag, ohne Entscheidung</dd>
-          </dl>
-        </div>
-
-        <div class="style-panel" id="panel-editorial" role="tabpanel" aria-labelledby="tab-editorial">
-          <h3>Editorial</h3>
-          <p>Eine Serife auf Elfenbein, mit steigendem Initial in Ultramarin,
-            um das die ersten Zeilen herumlaufen. Kaltes Blau auf warmem Papier
-            ist der älteste Kontrast der Buchgestaltung: Das liest sich gedruckt
-            statt dekoriert.</p>
-          <dl>
-            <dt>Schrift</dt><dd>New York, Apples eigene Serife</dd>
-            <dt>Papier</dt><dd>Elfenbein, Akzent Ultramarin</dd>
-            <dt>Für</dt><dd>Einen Satz wie eine Seite lesen</dd>
-          </dl>
-        </div>
-
-        <div class="style-panel" id="panel-bold" role="tabpanel" aria-labelledby="tab-bold">
-          <h3>Bold</h3>
-          <p>Der Satz als Plakat: Versalien in Archivo Black auf einer Karte mit
-            harter Kontur und hartem Schlagschatten, auf Acidgelb. Dunkel wird
-            nicht invertiert &mdash; Acid wird zur Karte, weil Schwarz auf
-            Schwarz genau das löschen würde, was den Stil ausmacht.</p>
-          <dl>
-            <dt>Schrift</dt><dd>Archivo Black, in Versalien</dd>
-            <dt>Papier</dt><dd>Acid auf Weiß, harter Schatten</dd>
-            <dt>Für</dt><dd>Tage, die es laut brauchen</dd>
-          </dl>
-        </div>
-
-        <p class="note">Jeder Stil hat eine eigene dunkle Fassung, gestaltet
-          statt invertiert, und alle drei wachsen mit Dynamic Type bis in die
-          Barrierefreiheits-Größen. Der Satz bleibt in jeder Größe auf einem
-          Bildschirm.</p>
-      </div>
+        <figcaption>Bold</figcaption>
+      </figure>
     </div>
   </div>
 </section>
@@ -226,23 +176,14 @@
       <div class="feature">
         <span class="metric">120</span>
         <h3>Sätze, geschrieben statt generiert</h3>
-        <p>Ein kuratierter Bestand in positiver Sprache: nichts zu bekämpfen,
-          nichts zu besiegen. Der Katalog läuft 120 Tage ohne Wiederholung, ein
-          Satz kommt also nach rund vier Monaten wieder.</p>
       </div>
       <div class="feature">
         <span class="metric">1</span>
         <h3>Mitteilung am Tag</h3>
-        <p>Zu deiner Uhrzeit. Am selben Tag für alle derselbe Satz, bestimmt vom
-          Datum statt von einem Algorithmus &mdash; die App zweimal zu öffnen
-          bringt also nie einen anderen.</p>
       </div>
       <div class="feature">
         <span class="metric">64</span>
         <h3>Tage im Voraus geplant</h3>
-        <p>Dein Satz kommt auch dann an, wenn du die App wochenlang nicht
-          öffnest. Wird der Puffer knapp, sagt die App es, statt still zu
-          werden.</p>
       </div>
     </div>
   </div>
@@ -290,26 +231,54 @@
     </div>
     <div class="cards">
       <div class="card-quiet">
+        <figure class="sketch sketch-widget">
+        <div class="sketch-frame" role="img" aria-label="Skizze: ein Homescreen-Widget mit dem Satz des Tages im Bold-Stil">
+          <div class="widget-wall">
+            <div class="widget-tile">
+              <p class="widget-sentence">Du musst heute nicht alles machen.</p>
+            </div>
+            <div class="widget-dock" aria-hidden="true">
+              <span></span><span></span><span></span><span></span>
+            </div>
+          </div>
+        </div>
+      </figure>
         <span class="tag">In Prüfung</span>
         <h3>Ein Widget für den Homescreen</h3>
         <p>Der Satz des Tages, ohne etwas zu öffnen. Bold ist der Stil, der auf
           einem Homescreen von Weitem trägt.</p>
       </div>
       <div class="card-quiet">
+        <figure class="sketch sketch-keep">
+        <div class="sketch-frame" role="img" aria-label="Skizze: eine kurze Liste behaltener Sätze, der neueste markiert">
+          <ul class="keep-list">
+              <li class="is-new"><span class="keep-mark" aria-hidden="true"></span>Dein Tempo darf dein eigenes sein.</li>
+              <li><span class="keep-mark" aria-hidden="true"></span>Du musst dir Ruhe nicht erst verdienen.</li>
+              <li><span class="keep-mark" aria-hidden="true"></span>Du kannst morgen auch morgen planen.</li>
+          </ul>
+        </div>
+      </figure>
         <span class="tag">In Prüfung</span>
         <h3>Einen Satz behalten</h3>
         <p>Ein Weg, die Sätze zu behalten, die getroffen haben, ohne die App in
           eine Sammlung zu verwandeln, die gepflegt werden will.</p>
       </div>
       <div class="card-quiet">
+        <figure class="sketch sketch-year">
+        <div class="sketch-frame" role="img" aria-label="Skizze: 365 Quadrate, eines pro Tag im Jahr, 120 davon gefüllt">
+          <div class="year-grid" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="off"></i><i class="off"></i><i class="off"></i><i class="off"></i><i class="off"></i><i class="off"></i><i class="off"></i><i class="off"></i><i class="off"></i><i class="off"></i><i class="off"></i><i class="off"></i><i class="off"></i><i class="off"></i><i class="off"></i><i class="off"></i><i class="off"></i><i class="off"></i><i class="off"></i><i class="off"></i><i class="off"></i><i class="off"></i><i class="off"></i><i class="off"></i><i class="off"></i><i class="off"></i><i class="off"></i><i class="off"></i><i class="off"></i><i class="off"></i><i class="off"></i><i class="off"></i><i class="off"></i><i class="off"></i><i class="off"></i><i class="off"></i><i class="off"></i><i class="off"></i><i class="off"></i><i class="off"></i><i class="off"></i><i class="off"></i><i class="off"></i><i class="off"></i><i class="off"></i><i class="off"></i><i class="off"></i><i class="off"></i><i class="off"></i><i class="off"></i><i class="off"></i><i class="off"></i><i class="off"></i><i class="off"></i><i class="off"></i><i class="off"></i><i class="off"></i><i class="off"></i><i class="off"></i><i class="off"></i><i class="off"></i><i class="off"></i><i class="off"></i><i class="off"></i><i class="off"></i><i class="off"></i><i class="off"></i><i class="off"></i><i class="off"></i><i class="off"></i><i class="off"></i><i class="off"></i><i class="off"></i><i class="off"></i><i class="off"></i><i class="off"></i><i class="off"></i><i class="off"></i><i class="off"></i><i class="off"></i><i class="off"></i><i class="off"></i><i class="off"></i><i class="off"></i><i class="off"></i><i class="off"></i><i class="off"></i><i class="off"></i><i class="off"></i><i class="off"></i><i class="off"></i><i class="off"></i><i class="off"></i><i class="off"></i><i class="off"></i><i class="off"></i><i class="off"></i><i class="off"></i><i class="off"></i><i class="off"></i><i class="off"></i><i class="off"></i><i class="off"></i><i class="off"></i><i class="off"></i><i class="off"></i><i class="off"></i><i class="off"></i><i class="off"></i><i class="off"></i><i class="off"></i><i class="off"></i><i class="off"></i><i class="off"></i><i class="off"></i><i class="off"></i><i class="off"></i><i class="off"></i><i class="off"></i><i class="off"></i><i class="off"></i><i class="off"></i><i class="off"></i><i class="off"></i><i class="off"></i><i class="off"></i><i class="off"></i><i class="off"></i><i class="off"></i><i class="off"></i><i class="off"></i><i class="off"></i><i class="off"></i><i class="off"></i><i class="off"></i><i class="off"></i><i class="off"></i><i class="off"></i><i class="off"></i><i class="off"></i><i class="off"></i><i class="off"></i><i class="off"></i><i class="off"></i><i class="off"></i><i class="off"></i><i class="off"></i><i class="off"></i><i class="off"></i><i class="off"></i><i class="off"></i><i class="off"></i><i class="off"></i><i class="off"></i><i class="off"></i><i class="off"></i><i class="off"></i><i class="off"></i><i class="off"></i><i class="off"></i><i class="off"></i><i class="off"></i><i class="off"></i><i class="off"></i><i class="off"></i><i class="off"></i><i class="off"></i><i class="off"></i><i class="off"></i><i class="off"></i><i class="off"></i><i class="off"></i><i class="off"></i><i class="off"></i><i class="off"></i><i class="off"></i><i class="off"></i><i class="off"></i><i class="off"></i><i class="off"></i><i class="off"></i><i class="off"></i><i class="off"></i><i class="off"></i><i class="off"></i><i class="off"></i><i class="off"></i><i class="off"></i><i class="off"></i><i class="off"></i><i class="off"></i><i class="off"></i><i class="off"></i><i class="off"></i><i class="off"></i><i class="off"></i><i class="off"></i><i class="off"></i><i class="off"></i><i class="off"></i><i class="off"></i><i class="off"></i><i class="off"></i><i class="off"></i><i class="off"></i><i class="off"></i><i class="off"></i><i class="off"></i><i class="off"></i><i class="off"></i><i class="off"></i><i class="off"></i><i class="off"></i><i class="off"></i><i class="off"></i><i class="off"></i><i class="off"></i><i class="off"></i><i class="off"></i><i class="off"></i><i class="off"></i><i class="off"></i><i class="off"></i><i class="off"></i><i class="off"></i><i class="off"></i><i class="off"></i><i class="off"></i><i class="off"></i><i class="off"></i><i class="off"></i><i class="off"></i><i class="off"></i><i class="off"></i><i class="off"></i><i class="off"></i><i class="off"></i><i class="off"></i><i class="off"></i><i class="off"></i><i class="off"></i><i class="off"></i><i class="off"></i><i class="off"></i><i class="off"></i></div>
+          <p class="year-caption">120 von 365 Tagen geschrieben</p>
+        </div>
+      </figure>
         <span class="tag">In Prüfung</span>
         <h3>Ein Satz für jeden Tag im Jahr</h3>
         <p>Der Katalog deckt heute 120 Tage ab. Ihn auf 365 zu schreiben ist
           redaktionelle Arbeit, keine technische.</p>
       </div>
     </div>
-    <p class="note">Das sind Kandidaten, keine Zusagen. Zuerst erscheint Version
-      eins, genau so, wie sie oben beschrieben ist.</p>
+    <p class="note">Das sind Kandidaten, keine Zusagen, und die Bilder sind
+      Skizzen statt Screenshots &mdash; gebaut ist davon nichts. Zuerst
+      erscheint Version eins, genau so, wie sie oben beschrieben ist.</p>
     <a class="link-more" href="../whats-next/de/">Alles, was kommt &rarr;</a>
   </div>
 </section>
@@ -346,7 +315,7 @@
         <ul>
           <li><a href="../support/de/">Support</a></li>
           <li><a href="../privacy/de/">Datenschutzerklärung</a></li>
-          <li><a href="mailto:alrightapp@icloud.com">alrightapp@icloud.com</a></li>
+          <li><a href="mailto:alrightapp@icloud.com" title="alrightapp@icloud.com">Kontakt</a></li>
         </ul>
       </div>
     </div>

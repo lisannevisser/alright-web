@@ -1,9 +1,8 @@
 /* alright — website behaviour
 
-   Three small things, all progressive enhancements: without this file every
-   style is simply listed one after another, the daily card shows one sentence,
-   and the date on the card is the one written into the HTML. Nothing here
-   loads, sends or stores anything.
+   Two small things, both progressive enhancements: without this file the three
+   styles simply stand next to each other and the date on a mockup is the one
+   written into the HTML. Nothing here loads, sends or stores anything.
 */
 (function () {
   "use strict";
@@ -18,53 +17,67 @@
     return (owner && owner.lang) || document.documentElement.lang || "en";
   };
 
-  /* ---------------------------------------------- the three styles as tabs */
+  var stillness = window.matchMedia
+    ? window.matchMedia("(prefers-reduced-motion: reduce)")
+    : { matches: false };
 
-  each(document.querySelectorAll("[data-style-tabs]"), function (tablist) {
-    var tabs = Array.prototype.slice.call(tablist.querySelectorAll(".style-tab"));
-    var panels = tabs.map(function (tab) {
-      return document.getElementById(tab.getAttribute("aria-controls"));
-    });
-    var screens = tabs.map(function (tab) {
-      return document.getElementById(tab.dataset.screen);
-    });
+  /* ------------------------------------------- the three styles, on their own
 
-    var select = function (index, focus) {
-      tabs.forEach(function (tab, i) {
-        var on = i === index;
-        tab.setAttribute("aria-selected", on ? "true" : "false");
-        tab.tabIndex = on ? 0 : -1;
-        if (panels[i]) panels[i].hidden = !on;
-        if (screens[i]) screens[i].hidden = !on;
-      });
-      if (focus) tabs[index].focus();
+     The phone wears one style at a time and changes by itself. Anyone who has
+     asked their system for less motion keeps all three side by side instead:
+     the same information, without something moving in the corner of the eye.
+     The rotation also stops while the section is off screen, so it isn't
+     running through a page nobody is looking at. */
+
+  each(document.querySelectorAll("[data-style-stage]"), function (stage) {
+    if (stillness.matches) return;
+
+    var shots = Array.prototype.slice.call(stage.querySelectorAll(".style-shot"));
+    if (shots.length < 2) return;
+
+    var interval = parseInt(stage.dataset.interval, 10) || 4500;
+    var at = 0;
+    var timer = null;
+
+    var show = function (index) {
+      shots.forEach(function (shot, i) { shot.hidden = i !== index; });
     };
 
-    tabs.forEach(function (tab, i) {
-      tab.addEventListener("click", function () { select(i, false); });
-      tab.addEventListener("keydown", function (event) {
-        var next = null;
-        if (event.key === "ArrowRight" || event.key === "ArrowDown") next = (i + 1) % tabs.length;
-        if (event.key === "ArrowLeft" || event.key === "ArrowUp") next = (i - 1 + tabs.length) % tabs.length;
-        if (event.key === "Home") next = 0;
-        if (event.key === "End") next = tabs.length - 1;
-        if (next === null) return;
-        event.preventDefault();
-        select(next, true);
-      });
-    });
+    var advance = function () {
+      at = (at + 1) % shots.length;
+      show(at);
+    };
 
-    select(0, false);
+    var start = function () {
+      if (timer === null) timer = window.setInterval(advance, interval);
+    };
+    var stop = function () {
+      window.clearInterval(timer);
+      timer = null;
+    };
+
+    var onScreen = true;
+    var settle = function () {
+      if (onScreen && !document.hidden) start(); else stop();
+    };
+
+    show(0);
+
+    if (window.IntersectionObserver) {
+      new IntersectionObserver(function (entries) {
+        onScreen = entries[0].isIntersecting;
+        settle();
+      }, { threshold: 0.2 }).observe(stage);
+    } else {
+      start();
+    }
+
+    document.addEventListener("visibilitychange", settle);
   });
-
-  /* There is deliberately no control that hands out another sentence. The one
-     thing the app refuses to do is exactly that, and a website that offers it
-     teaches the opposite of the product. The catalogue is shown as a list
-     instead, further down the page. */
 
   /* --------------------------------------------------------- today's date */
 
-  /* The card carries a written-out date so it reads correctly without
+  /* The mockups carry a written-out date so they read correctly without
      JavaScript; if JavaScript is there, it may as well be today's. */
   each(document.querySelectorAll("[data-today]"), function (node) {
     try {
