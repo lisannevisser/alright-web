@@ -1,18 +1,26 @@
 /* alright — website behaviour
 
-   Two small things, both progressive enhancements: without this file every
-   style is simply listed one after another and the daily card shows one
-   sentence. Nothing here loads, sends or stores anything.
+   Three small things, all progressive enhancements: without this file every
+   style is simply listed one after another, the daily card shows one sentence,
+   and the date on the card is the one written into the HTML. Nothing here
+   loads, sends or stores anything.
 */
 (function () {
   "use strict";
 
   document.documentElement.classList.add("js");
 
+  var each = function (list, fn) { Array.prototype.forEach.call(list, fn); };
+
+  /* The page language, taken from the nearest element that declares one. */
+  var languageOf = function (node) {
+    var owner = node.closest ? node.closest("[lang]") : null;
+    return (owner && owner.lang) || document.documentElement.lang || "en";
+  };
+
   /* ---------------------------------------------- the three styles as tabs */
 
-  var tablist = document.querySelector("[data-style-tabs]");
-  if (tablist) {
+  each(document.querySelectorAll("[data-style-tabs]"), function (tablist) {
     var tabs = Array.prototype.slice.call(tablist.querySelectorAll(".style-tab"));
     var panels = tabs.map(function (tab) {
       return document.getElementById(tab.getAttribute("aria-controls"));
@@ -47,53 +55,44 @@
     });
 
     select(0, false);
-  }
+  });
 
   /* ------------------------------------------------ one card, then the next */
 
-  var card = document.querySelector("[data-card]");
-  if (card && card.dataset.sentences) {
+  each(document.querySelectorAll("[data-card]"), function (card) {
+    if (!card.dataset.sentences) return;
     var sentences = JSON.parse(card.dataset.sentences);
     var target = card.querySelector("[data-card-sentence]");
+    if (sentences.length < 2 || !target) return;
+
     var at = 0;
+    var button = document.createElement("button");
+    button.type = "button";
+    button.className = "card-nudge";
+    button.textContent = card.dataset.nudgeLabel || "Another sentence";
+    /* The card is decorative next to the copy; announcing every flip would
+       interrupt a screen reader mid-page for no gain. */
+    target.setAttribute("aria-live", "off");
 
-    if (sentences.length > 1 && target) {
-      var button = document.createElement("button");
-      button.type = "button";
-      button.className = "card-nudge";
-      button.textContent = card.dataset.nudgeLabel || "Another sentence";
-      /* The card is decorative next to the copy; announcing every flip would
-         interrupt a screen reader mid-page for no gain. */
-      target.setAttribute("aria-live", "off");
+    button.addEventListener("click", function () {
+      at = (at + 1) % sentences.length;
+      target.textContent = sentences[at];
+    });
 
-      button.addEventListener("click", function () {
-        at = (at + 1) % sentences.length;
-        target.textContent = sentences[at];
-      });
-
-      card.appendChild(button);
-    }
-  }
+    card.appendChild(button);
+  });
 
   /* --------------------------------------------------------- today's date */
 
-  /* The mock card carries a written-out date so it reads correctly without
+  /* The card carries a written-out date so it reads correctly without
      JavaScript; if JavaScript is there, it may as well be today's. */
-  var dated = document.querySelectorAll("[data-today]");
-  if (dated.length) {
-    var locale = document.documentElement.lang || "en";
-    var formatted;
+  each(document.querySelectorAll("[data-today]"), function (node) {
     try {
-      formatted = new Date().toLocaleDateString(locale, {
+      node.textContent = new Date().toLocaleDateString(languageOf(node), {
         weekday: "long", month: "long", day: "numeric"
       });
     } catch (error) {
-      formatted = null;
+      /* Leave the written-out date in place. */
     }
-    if (formatted) {
-      Array.prototype.forEach.call(dated, function (node) {
-        node.textContent = formatted;
-      });
-    }
-  }
+  });
 })();

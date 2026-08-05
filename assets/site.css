@@ -38,6 +38,7 @@
   --bold-ink: #0a0a0a;
   --bold-shadow: #0a0a0a;
   --bold-date: #0a0a0a;
+  --bold-border: #0a0a0a;
 
   /* Rhythm */
   --measure: 62ch;
@@ -75,6 +76,7 @@
     /* The date sits outside the slab, on the black ground: it needs white,
        not the slab's ink, or it disappears. */
     --bold-date: #ffffff;
+    --bold-border: #e8ff3c;
   }
 }
 
@@ -588,12 +590,9 @@ main { display: block; }
 .screen-bold .screen-body { padding: 1.5rem 1.2rem 2rem; }
 .screen-bold .slab {
   background: var(--bold-slab);
-  border: 4px solid var(--bold-ink);
+  border: 4px solid var(--bold-border);
   box-shadow: 10px 10px 0 var(--bold-shadow);
   padding: 1.1rem 0.9rem;
-}
-@media (prefers-color-scheme: dark) {
-  .screen-bold .slab { border-color: var(--bold-slab); }
 }
 .screen-bold .screen-sentence {
   font-family: "Archivo Black", Impact, "Haettenschweiler", sans-serif;
