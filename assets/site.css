@@ -168,7 +168,7 @@ h1, h2, h3 {
 
 .site-header {
   position: relative;
-  z-index: 2;
+  z-index: 30;
   padding-block: 1.5rem;
 }
 .site-header .wrap {
@@ -228,31 +228,42 @@ h1, h2, h3 {
     background: none;
     color: var(--ink);
     cursor: pointer;
+    /* The sheet is a sibling inside the header, so the button it belongs to
+       has to be lifted above it or it cannot be pressed again. */
+    z-index: 25;
   }
+  /* The wordmark stays on top of the sheet for the same reason: the header
+     is still the header while the menu is open. */
+  .js .site-header .brand { position: relative; z-index: 25; }
   .js .nav-toggle[aria-expanded="true"] .nav-icon { background: transparent; }
   .js .nav-toggle[aria-expanded="true"] .nav-icon::before { transform: rotate(45deg); }
   .js .nav-toggle[aria-expanded="true"] .nav-icon::after { transform: rotate(-45deg); }
 
   .js .site-nav { display: none; }
+  /* Open, it is the page: a full sheet over everything, so nothing of the
+     content shows through or scrolls behind it. */
   .js .site-nav.is-open {
     display: flex;
+    position: fixed;
+    inset: 0;
+    z-index: 20;
     flex-direction: column;
     align-items: stretch;
-    width: 100%;
     gap: 0;
-    margin-top: 0.75rem;
-    padding-top: 0.25rem;
-    border-top: 1px solid var(--rule);
-    font-size: 1.05rem;
+    margin: 0;
+    padding: 6rem clamp(1.25rem, 5vw, 3rem) 2rem;
+    background: var(--bg);
+    font-size: 1.25rem;
+    overflow-y: auto;
+    overscroll-behavior: contain;
   }
-  /* Full-width rows rather than a stack of small links: on a phone the target
-     is a thumb, not a pointer. */
   .js .site-nav.is-open a {
-    padding: 0.9rem 0;
+    padding: 1rem 0;
     border-bottom: 1px solid var(--rule);
+    color: var(--ink);
   }
   .js .site-nav.is-open a:last-child { border-bottom: 0; }
-  .js .site-nav.is-open a[aria-current="page"] { border-bottom-color: var(--rule); }
+  .js .site-nav.is-open .nav-lang { color: var(--muted); }
 }
 
 main { display: block; }
@@ -323,6 +334,12 @@ main { display: block; }
 @media (min-width: 900px) {
   .hero-grid { grid-template-columns: 1.15fr 0.85fr; gap: 4.5rem; }
 }
+@media (max-width: 899px) {
+  .hero-grid .device, .style-stage .device { margin-inline: 0; max-width: 340px; }
+  .style-stage { justify-content: flex-start; }
+  .style-shot { width: min(340px, 100%); }
+  .style-shot figcaption { text-align: left; }
+}
 .hero h1 {
   font-size: clamp(2.5rem, 6.4vw, 4.25rem);
   font-weight: 600;
@@ -335,15 +352,18 @@ main { display: block; }
    there is nothing to download yet. Disabled on purpose: it is a state, not a
    control, so it stays out of the tab order rather than offering a dead stop. */
 .status-button {
-  margin-top: 2.5rem;
+  margin-top: clamp(1.75rem, 4vw, 2.5rem);
   display: inline-flex;
   align-items: center;
   gap: 0.65rem;
   font: inherit;
-  font-size: 1rem;
+  /* One line, always: the label is the longest string in the hero and a
+     narrow phone would otherwise break it across two. */
+  white-space: nowrap;
+  font-size: clamp(0.85rem, 3.6vw, 1rem);
   font-weight: 600;
   letter-spacing: -0.01em;
-  padding: 0.9rem 1.6rem;
+  padding: 0.9rem clamp(1.1rem, 4vw, 1.6rem);
   border-radius: 999px;
   border: 1px solid var(--rule-strong);
   background: none;
@@ -395,7 +415,6 @@ main { display: block; }
 .grid-features { display: grid; gap: 2.5rem; }
 @media (min-width: 640px) { .grid-features { grid-template-columns: repeat(2, 1fr); gap: 2.5rem 3rem; } }
 @media (min-width: 960px) { .grid-features { grid-template-columns: repeat(3, 1fr); gap: 3rem; } }
-.feature { border-top: 1px solid var(--rule); padding-top: 1.25rem; }
 .feature h3 { font-size: 1.1rem; margin: 0 0 0.5rem; letter-spacing: -0.015em; }
 .feature p { margin: 0; color: var(--muted); font-size: 0.98rem; }
 .feature .metric {
@@ -443,17 +462,8 @@ main { display: block; }
    not look more finished than the things that actually ship. */
 .cards { display: grid; gap: 2.5rem; }
 @media (min-width: 760px) { .cards { grid-template-columns: repeat(3, 1fr); gap: 3rem; } }
-.card-quiet { border-top: 1px solid var(--rule); padding-top: 1.25rem; }
 .card-quiet h3 { font-size: 1.05rem; margin: 0.6rem 0 0.4rem; }
 .card-quiet p { margin: 0; color: var(--muted); font-size: 0.96rem; }
-.tag {
-  display: inline-block;
-  font-size: 0.72rem;
-  font-weight: 600;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--muted);
-}
 
 .note {
   margin: 2rem 0 0;
@@ -804,7 +814,21 @@ main { display: block; }
 .prose { padding-block: clamp(2.5rem, 5vw, 3.5rem) 0; }
 .prose section { margin-top: clamp(2.5rem, 5vw, 3.5rem); }
 .prose h2 { font-size: clamp(1.3rem, 2.6vw, 1.6rem); margin: 0 0 0.9rem; }
-.prose h3 { font-size: 1.1rem; margin: 2rem 0 0.5rem; }
+.prose h3 { font-size: 1.15rem; margin: 2.25rem 0 0.5rem; }
+.prose h4 { font-size: 1rem; margin: 1.5rem 0 0.4rem; }
+
+/* The person, and room for a portrait beside her whenever there is one. */
+.about-intro { display: grid; gap: 1.75rem; }
+@media (min-width: 620px) {
+  .about-intro:has(.about-portrait) { grid-template-columns: 200px 1fr; gap: 2rem; }
+}
+.about-portrait { margin: 0; }
+.about-portrait img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 14px;
+}
 .prose p { margin: 0 0 1rem; }
 .prose ul, .prose ol { margin: 0 0 1rem; padding-left: 1.25rem; }
 .prose li { margin-bottom: 0.5rem; }
@@ -941,6 +965,8 @@ main { display: block; }
   outline: 1px solid var(--ink);
   outline-offset: 4px;
 }
+
+.menu-open, .menu-open body { overflow: hidden; }
 
 .skip-link {
   position: absolute;

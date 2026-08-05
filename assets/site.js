@@ -35,6 +35,8 @@
     var setMenu = function (open) {
       toggle.setAttribute("aria-expanded", open ? "true" : "false");
       nav.classList.toggle("is-open", open);
+      /* The sheet covers the page, so the page underneath must not scroll. */
+      document.documentElement.classList.toggle("menu-open", open);
     };
 
     toggle.addEventListener("click", function () {

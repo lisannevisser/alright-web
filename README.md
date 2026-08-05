@@ -13,7 +13,7 @@ Every page exists in English and German. German lives under a `de/` subfolder of
 | Page | English | German |
 |---|---|---|
 | Home | `/` | `/de/` |
-| Design — how the app is made | `/design/` | `/design/de/` |
+| About — who makes it, and why it is built this way | `/about/` | `/about/de/` |
 | What's next — roadmap, no dates | `/whats-next/` | `/whats-next/de/` |
 | Support | `/support/` | `/support/de/` |
 | Privacy Policy | `/privacy/` | `/privacy/de/` |
@@ -34,6 +34,9 @@ Note: Support used to live at `/`. The Support URL in App Store Connect has to p
 - `assets/fonts/` — Archivo Black, the typeface the app sets the Bold style in, and Outfit,
   the brand mark face, which sets the single “a” on the app icon in the lock screen mockup
   (both OFL, licences alongside them). Everything else on the site is system type.
+
+`/design/` was renamed to `/about/` on 05.08. Nothing links to the old path — the app only
+points at Support and Privacy — and the site is `noindex`, so no redirect was left behind.
 
 Header and footer are duplicated in each `index.html` on purpose: it keeps the site editable
 without a toolchain. Change one, change all ten.
