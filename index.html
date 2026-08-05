@@ -13,6 +13,7 @@
 <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
 </head>
 <body>
+<a class="skip-link" href="#content">Skip to content</a>
 <header class="site-header">
   <div class="wrap">
     <a class="brand" href="./" aria-label="alright">
@@ -41,27 +42,27 @@
   <div class="wrap hero-grid">
     <div>
       <h1>One affirmation a day.</h1>
-      <p class="lede">One quiet notification at the time you pick. No account,
-        no tracking, no feed to scroll.</p>
-      <p class="status">Coming to the App Store</p>
-      <ul class="hero-facts">
-        <li>120 sentences</li>
-        <li>English and German</li>
-        <li>Three styles</li>
-        <li>Nothing collected</li>
-      </ul>
+      <p class="lede">One quiet notification at the hour you pick. Then nothing
+        until tomorrow.</p>
+      <p class="status"><strong>Coming to the App Store.</strong> Version one is
+        finished and in testing.</p>
     </div>
-    <div class="hero-shot" data-card data-nudge-label="Another sentence" data-sentences='["You\u2019ve handled hard days before. Today is not different.", "Your pace is allowed to be your own.", "You don\u2019t have to earn your rest.", "You can plan tomorrow tomorrow.", "You don\u2019t have to carry all of it today."]'>
+    <div>
       <div class="device">
-      <div class="device-screen screen-clean">
-        <div class="screen-top"><svg class="gear" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 8a4 4 0 100 8 4 4 0 000-8zm0 6.2A2.2 2.2 0 1112 9.8a2.2 2.2 0 010 4.4z"/><path d="M20.3 13.1l-1.6-.9a6.9 6.9 0 000-2.4l1.6-.9a.8.8 0 00.3-1.1l-1.6-2.8a.8.8 0 00-1.1-.3l-1.6.9a7 7 0 00-2-1.2V2.6a.8.8 0 00-.8-.8h-3.2a.8.8 0 00-.8.8v1.8a7 7 0 00-2 1.2l-1.6-.9a.8.8 0 00-1.1.3L3.2 7.8a.8.8 0 00.3 1.1l1.6.9a6.9 6.9 0 000 2.4l-1.6.9a.8.8 0 00-.3 1.1l1.6 2.8a.8.8 0 001.1.3l1.6-.9a7 7 0 002 1.2v1.8c0 .4.4.8.8.8h3.2c.4 0 .8-.4.8-.8v-1.8a7 7 0 002-1.2l1.6.9a.8.8 0 001.1-.3l1.6-2.8a.8.8 0 00-.3-1.1z" opacity=".55"/></svg></div>
-        <div class="screen-body">
-          <p class="screen-sentence" data-card-sentence>You&#8217;ve handled hard days before. Today is not different.</p>
-          <p class="screen-date" data-today>Wednesday, August 5</p>
+      <div class="device-screen screen-lock" role="img" aria-label="A locked iPhone at 7:30 in the morning, showing one notification from alright: You don&#8217;t have to carry all of it today.">
+        <p class="lock-date" data-today>Wednesday, August 5</p>
+        <p class="lock-time">7:30</p>
+        <div class="lock-notification">
+          <p class="lock-meta">
+            <span class="lock-icon" aria-hidden="true">a</span>
+            <span class="lock-app">alright</span>
+            <span class="lock-when">now</span>
+          </p>
+          <p class="lock-sentence">You don&#8217;t have to carry all of it today.</p>
         </div>
+        <div class="lock-bar" aria-hidden="true"></div>
       </div>
     </div>
-      <p class="device-caption">The sentence for today. That is the whole screen.</p>
     </div>
   </div>
 </section>
@@ -69,10 +70,10 @@
 <section class="statement">
   <div class="wrap">
     <blockquote>That is the whole app, and that is the point.</blockquote>
-    <p class="attribution">alright shows you a single affirmation each day: one
-      carefully written sentence, full screen, in quiet typography. It arrives as
-      one notification at a time you choose. Nothing to set up beyond that,
-      nothing to keep up with, nothing that asks for you again later.</p>
+    <p class="attribution">Most days you never open it. The sentence arrives, you
+      read it on the lock screen, and the phone goes back in your pocket. Open it
+      and you get the same sentence full screen, set in the style you chose &mdash;
+      but nothing in alright is waiting for you to come in.</p>
   </div>
 </section>
 
@@ -106,21 +107,69 @@
 <section class="section">
   <div class="wrap rule-top">
     <div class="section-head">
+      <h2>The sentences</h2>
+      <p>Six of the 120, unedited. Every one exists in English and German,
+        written rather than translated; the app follows your phone.</p>
+    </div>
+    <div class="sentences">
+      <p>You&#8217;ve handled hard days before. Today is not different.</p>
+      <p>Your pace is allowed to be your own.</p>
+      <p>You don&#8217;t have to earn your rest.</p>
+      <p>You can plan tomorrow tomorrow.</p>
+      <p>You can care about someone without carrying them.</p>
+      <p>You don&#8217;t have to carry all of it today.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap rule-top">
+    <div class="section-head">
       <h2>Three ways to set the same sentence</h2>
       <p>One catalogue, three typographic settings. Switch whenever the mood
         changes &mdash; the sentence of the day stays the same.</p>
     </div>
     <div class="styles-layout">
-      <div>
-        <div class="style-tabs" role="tablist" aria-label="Design styles" data-style-tabs>
-          <button class="style-tab" type="button" role="tab" id="tab-clean"
-            aria-controls="panel-clean" data-screen="screen-clean" aria-selected="true">Clean</button>
-          <button class="style-tab" type="button" role="tab" id="tab-editorial"
-            aria-controls="panel-editorial" data-screen="screen-editorial" aria-selected="false">Editorial</button>
-          <button class="style-tab" type="button" role="tab" id="tab-bold"
-            aria-controls="panel-bold" data-screen="screen-bold" aria-selected="false">Bold</button>
-        </div>
+      <div class="style-tabs" role="tablist" aria-label="Design styles" data-style-tabs>
+        <button class="style-tab" type="button" role="tab" id="tab-clean"
+          aria-controls="panel-clean" data-screen="screen-clean" aria-selected="true">Clean</button>
+        <button class="style-tab" type="button" role="tab" id="tab-editorial"
+          aria-controls="panel-editorial" data-screen="screen-editorial" aria-selected="false">Editorial</button>
+        <button class="style-tab" type="button" role="tab" id="tab-bold"
+          aria-controls="panel-bold" data-screen="screen-bold" aria-selected="false">Bold</button>
+      </div>
 
+      <div class="style-preview">
+        <div class="device" id="screen-clean">
+      <div class="device-screen screen-clean">
+        <div class="screen-top"><svg class="gear" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 8a4 4 0 100 8 4 4 0 000-8zm0 6.2A2.2 2.2 0 1112 9.8a2.2 2.2 0 010 4.4z"/><path d="M20.3 13.1l-1.6-.9a6.9 6.9 0 000-2.4l1.6-.9a.8.8 0 00.3-1.1l-1.6-2.8a.8.8 0 00-1.1-.3l-1.6.9a7 7 0 00-2-1.2V2.6a.8.8 0 00-.8-.8h-3.2a.8.8 0 00-.8.8v1.8a7 7 0 00-2 1.2l-1.6-.9a.8.8 0 00-1.1.3L3.2 7.8a.8.8 0 00.3 1.1l1.6.9a6.9 6.9 0 000 2.4l-1.6.9a.8.8 0 00-.3 1.1l1.6 2.8a.8.8 0 001.1.3l1.6-.9a7 7 0 002 1.2v1.8c0 .4.4.8.8.8h3.2c.4 0 .8-.4.8-.8v-1.8a7 7 0 002-1.2l1.6.9a.8.8 0 001.1-.3l1.6-2.8a.8.8 0 00-.3-1.1z" opacity=".55"/></svg></div>
+        <div class="screen-body">
+          <p class="screen-sentence" data-card-sentence>You don&#8217;t have to carry all of it today.</p>
+          <p class="screen-date" data-today>Wednesday, August 5</p>
+        </div>
+      </div>
+    </div>
+        <div class="device" id="screen-editorial" hidden>
+      <div class="device-screen screen-editorial">
+        <div class="screen-top"><svg class="gear" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 8a4 4 0 100 8 4 4 0 000-8zm0 6.2A2.2 2.2 0 1112 9.8a2.2 2.2 0 010 4.4z"/><path d="M20.3 13.1l-1.6-.9a6.9 6.9 0 000-2.4l1.6-.9a.8.8 0 00.3-1.1l-1.6-2.8a.8.8 0 00-1.1-.3l-1.6.9a7 7 0 00-2-1.2V2.6a.8.8 0 00-.8-.8h-3.2a.8.8 0 00-.8.8v1.8a7 7 0 00-2 1.2l-1.6-.9a.8.8 0 00-1.1.3L3.2 7.8a.8.8 0 00.3 1.1l1.6.9a6.9 6.9 0 000 2.4l-1.6.9a.8.8 0 00-.3 1.1l1.6 2.8a.8.8 0 001.1.3l1.6-.9a7 7 0 002 1.2v1.8c0 .4.4.8.8.8h3.2c.4 0 .8-.4.8-.8v-1.8a7 7 0 002-1.2l1.6.9a.8.8 0 001.1-.3l1.6-2.8a.8.8 0 00-.3-1.1z" opacity=".55"/></svg></div>
+        <div class="screen-body">
+          <p class="screen-sentence" data-card-sentence><span class="initial" aria-hidden="true">Y</span><span class="visually-hidden">Y</span>ou don&#8217;t have to carry all of it today.</p>
+          <p class="screen-date" data-today>Wednesday, August 5</p>
+        </div>
+      </div>
+    </div>
+        <div class="device" id="screen-bold" hidden>
+      <div class="device-screen screen-bold">
+        <div class="screen-top"><svg class="gear" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 8a4 4 0 100 8 4 4 0 000-8zm0 6.2A2.2 2.2 0 1112 9.8a2.2 2.2 0 010 4.4z"/><path d="M20.3 13.1l-1.6-.9a6.9 6.9 0 000-2.4l1.6-.9a.8.8 0 00.3-1.1l-1.6-2.8a.8.8 0 00-1.1-.3l-1.6.9a7 7 0 00-2-1.2V2.6a.8.8 0 00-.8-.8h-3.2a.8.8 0 00-.8.8v1.8a7 7 0 00-2 1.2l-1.6-.9a.8.8 0 00-1.1.3L3.2 7.8a.8.8 0 00.3 1.1l1.6.9a6.9 6.9 0 000 2.4l-1.6.9a.8.8 0 00-.3 1.1l1.6 2.8a.8.8 0 001.1.3l1.6-.9a7 7 0 002 1.2v1.8c0 .4.4.8.8.8h3.2c.4 0 .8-.4.8-.8v-1.8a7 7 0 002-1.2l1.6.9a.8.8 0 001.1-.3l1.6-2.8a.8.8 0 00-.3-1.1z" opacity=".55"/></svg></div>
+        <div class="screen-body">
+          <div class="slab"><p class="screen-sentence" data-card-sentence>You don&#8217;t have to carry all of it today.</p></div>
+          <p class="screen-date" data-today>Wednesday, August 5</p>
+        </div>
+      </div>
+    </div>
+      </div>
+
+      <div class="style-panels">
         <div class="style-panel" id="panel-clean" role="tabpanel" aria-labelledby="tab-clean">
           <h3>Clean</h3>
           <p>The default. System type on paper white, centred, nothing else on
@@ -156,36 +205,10 @@
             <dt>For</dt><dd>Days that need saying out loud</dd>
           </dl>
         </div>
-      </div>
 
-      <div>
-        <div class="device" id="screen-clean">
-      <div class="device-screen screen-clean">
-        <div class="screen-top"><svg class="gear" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 8a4 4 0 100 8 4 4 0 000-8zm0 6.2A2.2 2.2 0 1112 9.8a2.2 2.2 0 010 4.4z"/><path d="M20.3 13.1l-1.6-.9a6.9 6.9 0 000-2.4l1.6-.9a.8.8 0 00.3-1.1l-1.6-2.8a.8.8 0 00-1.1-.3l-1.6.9a7 7 0 00-2-1.2V2.6a.8.8 0 00-.8-.8h-3.2a.8.8 0 00-.8.8v1.8a7 7 0 00-2 1.2l-1.6-.9a.8.8 0 00-1.1.3L3.2 7.8a.8.8 0 00.3 1.1l1.6.9a6.9 6.9 0 000 2.4l-1.6.9a.8.8 0 00-.3 1.1l1.6 2.8a.8.8 0 001.1.3l1.6-.9a7 7 0 002 1.2v1.8c0 .4.4.8.8.8h3.2c.4 0 .8-.4.8-.8v-1.8a7 7 0 002-1.2l1.6.9a.8.8 0 001.1-.3l1.6-2.8a.8.8 0 00-.3-1.1z" opacity=".55"/></svg></div>
-        <div class="screen-body">
-          <p class="screen-sentence" data-card-sentence>You&#8217;ve handled hard days before. Today is not different.</p>
-          <p class="screen-date" data-today>Wednesday, August 5</p>
-        </div>
-      </div>
-    </div>
-        <div class="device" id="screen-editorial" hidden>
-      <div class="device-screen screen-editorial">
-        <div class="screen-top"><svg class="gear" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 8a4 4 0 100 8 4 4 0 000-8zm0 6.2A2.2 2.2 0 1112 9.8a2.2 2.2 0 010 4.4z"/><path d="M20.3 13.1l-1.6-.9a6.9 6.9 0 000-2.4l1.6-.9a.8.8 0 00.3-1.1l-1.6-2.8a.8.8 0 00-1.1-.3l-1.6.9a7 7 0 00-2-1.2V2.6a.8.8 0 00-.8-.8h-3.2a.8.8 0 00-.8.8v1.8a7 7 0 00-2 1.2l-1.6-.9a.8.8 0 00-1.1.3L3.2 7.8a.8.8 0 00.3 1.1l1.6.9a6.9 6.9 0 000 2.4l-1.6.9a.8.8 0 00-.3 1.1l1.6 2.8a.8.8 0 001.1.3l1.6-.9a7 7 0 002 1.2v1.8c0 .4.4.8.8.8h3.2c.4 0 .8-.4.8-.8v-1.8a7 7 0 002-1.2l1.6.9a.8.8 0 001.1-.3l1.6-2.8a.8.8 0 00-.3-1.1z" opacity=".55"/></svg></div>
-        <div class="screen-body">
-          <p class="screen-sentence" data-card-sentence><span class="initial" aria-hidden="true">Y</span><span class="visually-hidden">Y</span>our pace is allowed to be your own.</p>
-          <p class="screen-date" data-today>Wednesday, August 5</p>
-        </div>
-      </div>
-    </div>
-        <div class="device" id="screen-bold" hidden>
-      <div class="device-screen screen-bold">
-        <div class="screen-top"><svg class="gear" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 8a4 4 0 100 8 4 4 0 000-8zm0 6.2A2.2 2.2 0 1112 9.8a2.2 2.2 0 010 4.4z"/><path d="M20.3 13.1l-1.6-.9a6.9 6.9 0 000-2.4l1.6-.9a.8.8 0 00.3-1.1l-1.6-2.8a.8.8 0 00-1.1-.3l-1.6.9a7 7 0 00-2-1.2V2.6a.8.8 0 00-.8-.8h-3.2a.8.8 0 00-.8.8v1.8a7 7 0 00-2 1.2l-1.6-.9a.8.8 0 00-1.1.3L3.2 7.8a.8.8 0 00.3 1.1l1.6.9a6.9 6.9 0 000 2.4l-1.6.9a.8.8 0 00-.3 1.1l1.6 2.8a.8.8 0 001.1.3l1.6-.9a7 7 0 002 1.2v1.8c0 .4.4.8.8.8h3.2c.4 0 .8-.4.8-.8v-1.8a7 7 0 002-1.2l1.6.9a.8.8 0 001.1-.3l1.6-2.8a.8.8 0 00-.3-1.1z" opacity=".55"/></svg></div>
-        <div class="screen-body">
-          <div class="slab"><p class="screen-sentence" data-card-sentence>You don&#8217;t have to carry all of it today.</p></div>
-          <p class="screen-date" data-today>Wednesday, August 5</p>
-        </div>
-      </div>
-    </div>
+        <p class="note">Each style has its own dark version, drawn rather than
+          inverted, and all three scale with Dynamic Type up to the
+          accessibility sizes. The sentence stays on one screen at every size.</p>
       </div>
     </div>
   </div>
@@ -194,22 +217,22 @@
 <section class="section">
   <div class="wrap rule-top">
     <div class="section-head">
-      <h2>What&#8217;s in it</h2>
-      <p>Everything the app does today, in full. There is no longer list
-        somewhere else.</p>
+      <h2>The whole app in three numbers</h2>
     </div>
     <div class="grid-features">
       <div class="feature">
         <span class="metric">120</span>
         <h3>Sentences, written not generated</h3>
         <p>A curated set in positive language: nothing to fight, nothing to
-          beat. The catalogue runs through all 120 days without repeating.</p>
+          beat. The catalogue runs 120 days without repeating, so a sentence
+          comes back after about four months.</p>
       </div>
       <div class="feature">
         <span class="metric">1</span>
         <h3>Notification a day</h3>
-        <p>At the time you choose. The same sentence for everyone on the same
-          day, decided by the date rather than by an algorithm.</p>
+        <p>At the hour you choose. The same sentence for everyone on the same
+          day, decided by the date rather than by an algorithm &mdash; so
+          opening the app twice never produces a different one.</p>
       </div>
       <div class="feature">
         <span class="metric">64</span>
@@ -217,21 +240,6 @@
         <p>Your sentence still arrives if you don&#8217;t open the app for
           weeks. When the buffer runs low, the app says so instead of going
           quiet.</p>
-      </div>
-      <div class="feature">
-        <h3>English and German</h3>
-        <p>Every sentence exists in both, written rather than translated. The
-          app follows the language your phone is set to.</p>
-      </div>
-      <div class="feature">
-        <h3>Light and dark</h3>
-        <p>Each style has its own dark version, drawn rather than inverted. Or
-          pin one mode instead of following the system.</p>
-      </div>
-      <div class="feature">
-        <h3>Type that scales</h3>
-        <p>Full support for Dynamic Type and Reduced Motion. The sentence stays
-          on one screen at every size.</p>
       </div>
     </div>
   </div>

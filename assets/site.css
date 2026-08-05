@@ -41,8 +41,8 @@
   --bold-border: #0a0a0a;
 
   /* Rhythm */
-  --measure: 62ch;
   --page: 1120px;
+  --page-prose: 700px;
   --gap-section: clamp(4.5rem, 9vw, 8rem);
 }
 
@@ -91,6 +91,16 @@
   font-display: swap;
 }
 
+/* Outfit is the brand mark face: wordmark, app icon, splash, and nothing else.
+   Here it sets exactly one glyph — the "a" on the icon in the lock screen. */
+@font-face {
+  font-family: "Outfit";
+  src: url("fonts/Outfit-Medium.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
 /* ------------------------------------------------------- 2. Base and layout */
 
 * { box-sizing: border-box; }
@@ -113,6 +123,9 @@ body {
   margin: 0 auto;
   padding-inline: clamp(1.25rem, 5vw, 3rem);
 }
+/* Reading pages get the narrow measure from the container, so heading and body
+   share one left edge instead of a centred column under a left-aligned title. */
+.wrap-narrow { max-width: var(--page-prose); }
 
 a {
   color: inherit;
@@ -261,41 +274,18 @@ main { display: block; }
 }
 .hero .lede { margin-bottom: 2rem; }
 
+/* The most important sentence on the page is that you cannot have it yet.
+   It is set as type, not as a badge: a pill would dress the one honest
+   caveat up as decoration. */
 .status {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.6rem;
-  padding: 0.5rem 1rem 0.5rem 0.85rem;
-  border: 1px solid var(--rule-strong);
-  border-radius: 999px;
-  font-size: 0.85rem;
-  font-weight: 600;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-  color: var(--muted);
-}
-.status::before {
-  content: "";
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  background: currentColor;
-  opacity: 0.55;
-}
-
-.hero-facts {
   margin: 2.5rem 0 0;
-  padding: 1.25rem 0 0;
+  padding-top: 1.25rem;
   border-top: 1px solid var(--rule);
-  list-style: none;
-  display: flex;
-  flex-wrap: wrap;
-  /* No dot separators: they dangle at the start of a line as soon as the list
-     wraps, which it does on a phone. Space does the same work. */
-  gap: 0.5rem 2.25rem;
-  font-size: 0.9rem;
+  max-width: 40ch;
+  font-size: 0.95rem;
   color: var(--muted);
 }
+.status strong { color: var(--ink); font-weight: 600; }
 
 /* Pull quote: the one loud line on the page */
 .statement { padding-block: var(--gap-section); }
@@ -327,26 +317,37 @@ main { display: block; }
 .step h3 { font-size: 1.2rem; margin: 0 0 0.5rem; }
 .step p { margin: 0; color: var(--muted); }
 
-/* Feature grid */
-.grid-features { display: grid; gap: 2rem; }
-@media (min-width: 640px) { .grid-features { grid-template-columns: repeat(2, 1fr); gap: 2rem; } }
-@media (min-width: 960px) { .grid-features { grid-template-columns: repeat(3, 1fr); gap: 2.5rem 3rem; } }
-.feature {
-  background: var(--bg-raised);
-  border: 1px solid var(--rule);
-  border-radius: 18px;
-  padding: 1.75rem;
-  box-shadow: var(--shadow-lift);
-}
+/* Feature columns. No cards: the phone is the only object on this page, and a
+   grid of boxes around it turns the whole thing into a dashboard. A hairline
+   above each column does the same grouping work with none of the noise. */
+.grid-features { display: grid; gap: 2.5rem; }
+@media (min-width: 640px) { .grid-features { grid-template-columns: repeat(2, 1fr); gap: 2.5rem 3rem; } }
+@media (min-width: 960px) { .grid-features { grid-template-columns: repeat(3, 1fr); gap: 3rem; } }
+.feature { border-top: 1px solid var(--rule); padding-top: 1.25rem; }
 .feature h3 { font-size: 1.1rem; margin: 0 0 0.5rem; letter-spacing: -0.015em; }
 .feature p { margin: 0; color: var(--muted); font-size: 0.98rem; }
 .feature .metric {
   display: block;
-  font-size: 2.25rem;
+  font-size: clamp(2.5rem, 5vw, 3.25rem);
   font-weight: 600;
-  letter-spacing: -0.04em;
+  letter-spacing: -0.045em;
   line-height: 1;
   margin-bottom: 0.75rem;
+  font-variant-numeric: tabular-nums;
+}
+
+/* The sentences, shown as themselves: no card, no quotation marks, no
+   attribution. Reading six of them is the only honest sample. */
+.sentences { display: grid; gap: 0; }
+@media (min-width: 760px) { .sentences { grid-template-columns: repeat(2, 1fr); column-gap: 4rem; } }
+.sentences p {
+  margin: 0;
+  padding: 1.4rem 0;
+  border-top: 1px solid var(--rule);
+  font-size: clamp(1.1rem, 2.2vw, 1.35rem);
+  line-height: 1.35;
+  letter-spacing: -0.015em;
+  text-wrap: pretty;
 }
 
 /* The "what it doesn't do" list */
@@ -366,26 +367,20 @@ main { display: block; }
   flex: none;
 }
 
-/* Quiet cards, used for what's-next items */
-.cards { display: grid; gap: 1.25rem; }
-@media (min-width: 760px) { .cards { grid-template-columns: repeat(3, 1fr); gap: 1.5rem; } }
-.card-quiet {
-  border: 1px solid var(--rule);
-  border-radius: 18px;
-  padding: 1.5rem;
-}
-.card-quiet h3 { font-size: 1.05rem; margin: 0.75rem 0 0.4rem; }
+/* What's-next items. Same hairline column as the features: candidates should
+   not look more finished than the things that actually ship. */
+.cards { display: grid; gap: 2.5rem; }
+@media (min-width: 760px) { .cards { grid-template-columns: repeat(3, 1fr); gap: 3rem; } }
+.card-quiet { border-top: 1px solid var(--rule); padding-top: 1.25rem; }
+.card-quiet h3 { font-size: 1.05rem; margin: 0.6rem 0 0.4rem; }
 .card-quiet p { margin: 0; color: var(--muted); font-size: 0.96rem; }
 .tag {
   display: inline-block;
-  font-size: 0.7rem;
+  font-size: 0.72rem;
   font-weight: 600;
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--muted);
-  border: 1px solid var(--rule-strong);
-  border-radius: 999px;
-  padding: 0.2rem 0.6rem;
 }
 
 .note {
@@ -479,39 +474,113 @@ main { display: block; }
   color: var(--clean-chrome);
 }
 
-.device-caption {
-  margin: 1.25rem 0 0;
-  text-align: center;
-  font-size: 0.85rem;
-  color: var(--muted);
-}
+/* ------------------------------------------------------ 5b. The lock screen
 
-/* The card-flip control: interaction only, never automatic — the page is
-   supposed to sit still. Injected by site.js, so it is absent without it. */
-.card-nudge {
-  display: block;
-  margin: 1rem auto 0;
-  background: none;
-  border: 1px solid var(--rule-strong);
-  border-radius: 999px;
-  color: var(--muted);
-  font: inherit;
-  font-size: 0.85rem;
-  padding: 0.4rem 1rem;
-  cursor: pointer;
+   What the app actually is on almost every day: one notification on a locked
+   phone, at the hour its reader picked. The open app is the exception, so it
+   is shown further down, in the styles section, and not here. */
+
+.screen-lock {
+  background: linear-gradient(168deg, #26313d 0%, #141a20 52%, #0b0d10 100%);
+  color: #f5f5f0;
+  justify-content: flex-start;
+  padding: 2.4rem 0.9rem 1.1rem;
+  text-align: center;
 }
-.card-nudge:hover { color: var(--ink); border-color: currentColor; }
+.lock-date {
+  margin: 0;
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  opacity: 0.85;
+}
+.lock-time {
+  margin: 0.1rem 0 0;
+  font-size: 3.1rem;
+  font-weight: 500;
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  font-variant-numeric: tabular-nums;
+}
+.lock-notification {
+  margin-top: auto;
+  text-align: left;
+  background: rgba(255, 255, 255, 0.14);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 18px;
+  padding: 0.7rem 0.8rem 0.8rem;
+}
+.lock-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 0.68rem;
+  letter-spacing: 0.02em;
+  margin: 0 0 0.35rem;
+  opacity: 0.9;
+}
+/* The real app icon: dark square, lowercase a in Outfit, per the brand guide.
+   Outfit appears here and nowhere else on the site. */
+.lock-icon {
+  width: 20px;
+  height: 20px;
+  border-radius: 6px;
+  background: #111417;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  color: #f5f5f0;
+  font-family: "Outfit", -apple-system, sans-serif;
+  font-size: 13px;
+  line-height: 20px;
+  text-align: center;
+  flex: none;
+}
+.lock-app { font-weight: 600; }
+.lock-when { margin-left: auto; opacity: 0.7; }
+.lock-sentence {
+  margin: 0;
+  font-size: 0.92rem;
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  text-wrap: pretty;
+}
+.lock-bar {
+  width: 96px;
+  height: 4px;
+  border-radius: 2px;
+  background: rgba(245, 245, 240, 0.4);
+  margin: 0.9rem auto 0;
+}
 
 /* ------------------------------------------------------- 6. The three styles */
 
-.styles-layout { display: grid; gap: 2.5rem; align-items: start; }
-@media (min-width: 900px) { .styles-layout { grid-template-columns: 0.9fr 1.1fr; gap: 4rem; } }
+/* On a phone the switch has to sit right above the thing it switches, or you
+   tap a tab and the result is a screen and a half further down. Hence three
+   siblings and an explicit order, rather than a column of copy in between. */
+.styles-layout {
+  display: grid;
+  gap: 2rem;
+  align-items: start;
+  grid-template-areas: "tabs" "preview" "panels";
+}
+@media (min-width: 900px) {
+  .styles-layout {
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas: "tabs preview" "panels preview";
+    /* The phone spans both rows and is taller than the copy. Without this the
+       browser hands the slack to row one and the switch drifts away from the
+       text it belongs to. */
+    grid-template-rows: auto 1fr;
+    gap: 1.5rem 4rem;
+  }
+}
+.style-tabs { grid-area: tabs; }
+.style-preview { grid-area: preview; }
+.style-panels { grid-area: panels; }
 
 .style-tabs {
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem;
-  margin-bottom: 2rem;
 }
 .style-tab {
   font: inherit;
@@ -621,7 +690,7 @@ main { display: block; }
 .page-head .lede { margin-top: 1.25rem; max-width: 52ch; }
 .page-head .meta { margin: 1rem 0 0; color: var(--muted); font-size: 0.9rem; }
 
-.prose { max-width: var(--measure); padding-block: clamp(2.5rem, 5vw, 3.5rem) 0; }
+.prose { padding-block: clamp(2.5rem, 5vw, 3.5rem) 0; }
 .prose section { margin-top: clamp(2.5rem, 5vw, 3.5rem); }
 .prose h2 { font-size: clamp(1.3rem, 2.6vw, 1.6rem); margin: 0 0 0.9rem; }
 .prose h3 { font-size: 1.1rem; margin: 2rem 0 0.5rem; }
@@ -642,6 +711,19 @@ main { display: block; }
 .prose .aside p:last-child { margin-bottom: 0; }
 
 /* --------------------------------------------------------------- 8. Utilities */
+
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  z-index: 20;
+  background: var(--ink);
+  color: var(--bg);
+  padding: 0.6rem 1rem;
+  border-radius: 0 0 8px 0;
+  text-decoration: none;
+}
+.skip-link:focus { left: 0; }
 
 .visually-hidden {
   position: absolute;

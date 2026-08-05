@@ -57,30 +57,10 @@
     select(0, false);
   });
 
-  /* ------------------------------------------------ one card, then the next */
-
-  each(document.querySelectorAll("[data-card]"), function (card) {
-    if (!card.dataset.sentences) return;
-    var sentences = JSON.parse(card.dataset.sentences);
-    var target = card.querySelector("[data-card-sentence]");
-    if (sentences.length < 2 || !target) return;
-
-    var at = 0;
-    var button = document.createElement("button");
-    button.type = "button";
-    button.className = "card-nudge";
-    button.textContent = card.dataset.nudgeLabel || "Another sentence";
-    /* The card is decorative next to the copy; announcing every flip would
-       interrupt a screen reader mid-page for no gain. */
-    target.setAttribute("aria-live", "off");
-
-    button.addEventListener("click", function () {
-      at = (at + 1) % sentences.length;
-      target.textContent = sentences[at];
-    });
-
-    card.appendChild(button);
-  });
+  /* There is deliberately no control that hands out another sentence. The one
+     thing the app refuses to do is exactly that, and a website that offers it
+     teaches the opposite of the product. The catalogue is shown as a list
+     instead, further down the page. */
 
   /* --------------------------------------------------------- today's date */
 
