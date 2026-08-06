@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Datenschutzerklärung — alright</title>
-<meta name="description" content="alright erhebt keine Daten: kein Konto, keine Analyse, keine Netzwerkaufrufe.">
+<title>Über — alright</title>
+<meta name="description" content="Gemacht von einer Person: Lisanne Visser, Designerin, Builderin und Yogalehrerin. Warum es alright gibt und wie es gebaut ist.">
 <meta name="robots" content="noindex, nofollow">
 <link rel="stylesheet" href="../../assets/site.css">
 <link rel="icon" type="image/svg+xml" href="../../favicon.svg">
@@ -33,10 +33,10 @@
       <span class="nav-icon" aria-hidden="true"></span>
     </button>
     <nav class="site-nav" id="site-nav" aria-label="Hauptnavigation">
-        <a href="../../about/de/">Über</a>
+        <a href="../../about/de/" aria-current="page">Über</a>
         <a href="../../whats-next/de/">Was kommt</a>
         <a href="../../support/de/">Support</a>
-        <a class="nav-lang" href="../../privacy/">English</a>
+        <a class="nav-lang" href="../../about/">English</a>
     </nav>
   </div>
 </header>
@@ -44,57 +44,208 @@
 <main id="content">
 <section class="page-head">
   <div class="wrap wrap-narrow">
-    <p class="eyebrow">Rechtliches</p>
-    <h1>Datenschutzerklärung</h1>
-    <p class="meta">Stand: 2. August 2026</p>
+    <p class="eyebrow">Über</p>
+    <h1>Eine App für dich, gemacht von einer Person</h1>
+    <p class="lede">Ich gestalte alright, baue es und schreibe die Affirmationen.
+      Hier steht, wo das herkommt &mdash; und warum es so leise geworden ist.</p>
   </div>
 </section>
 
 <div class="wrap wrap-narrow">
 <div class="prose">
   <section>
-    <h2>Kurzfassung</h2>
-    <p>alright erhebt keine Daten. Es gibt kein Konto, keine Analyse-Tools, keine Werbung, kein Tracking durch Dritte und keinen eigenen Server. Alles, was die App speichert, bleibt auf deinem Gerät.</p>
+    <div class="about-intro">
+      <!-- Hier kommt ein Porträt hin, sobald du eines hast. Datei nach assets/
+           legen und auskommentieren:
+      <figure class="about-portrait">
+        <img src="../../assets/lisanne.jpg" alt="Lisanne Visser" width="640" height="800">
+      </figure>
+      -->
+      <div>
+        <p>Hi, ich bin Lisanne, Designerin, die angefangen hat zu bauen. Ich
+          arbeite seit mehreren Jahren im Design und habe die ganze Zeit über
+          nach Produkten gesucht, die wirklich durch ihre Oberfläche überzeugen:
+          die sorgfältig damit umgehen, wie sie aussehen und wie sie sich
+          verhalten, und nicht nur damit, was sie können oder womit sich am
+          meisten Geld verdienen lässt.</p>
+        <p>In meiner freien Zeit unterrichte ich außerdem Yoga, und Mindfulness
+          ist eine Kategorie, die ich von innen kenne. Die meisten Apps &mdash;
+          nicht nur in dieser Kategorie &mdash; verlangen deutlich mehr
+          Aufmerksamkeit als die Praxis, die sie eigentlich stützen sollen. Ich
+          wollte eine richtig gemachte: eine einzige Affirmation am Tag, in einer
+          Typografie, die man gern ansieht, und die aus einer ruhigen Gewohnheit
+          nie eine Pflicht macht. Irgendwann hatte Warten keinen Sinn mehr, also
+          habe ich sie gebaut.</p>
+        <p>Mehr von meiner Arbeit:
+          <a href="https://lisannevisser.github.io/portfolio/#/">lisannevisser.github.io/portfolio</a></p>
+      </div>
+    </div>
   </section>
 
   <section>
-    <h2>Was alright speichert, und wo</h2>
-    <ul>
-      <li><strong>Deine Einstellungen</strong> (gewählte Uhrzeit für Mitteilungen, Sprache, visueller Stil, Erscheinungsbild) werden lokal auf deinem Gerät über Apples Standard-App-Speicher (UserDefaults) abgelegt.</li>
-      <li><strong>Die täglichen Affirmationen</strong> sind fest in der App enthalten — nichts wird von einem Server geladen.</li>
-      <li><strong>Mitteilungen</strong> werden lokal auf deinem Gerät über Apples Benachrichtigungssystem (UNUserNotificationCenter) geplant. Wir sehen nicht, ob oder wann eine Mitteilung zugestellt oder geöffnet wurde.</li>
-    </ul>
-    <p>Falls dein Gerät ein iCloud- oder Computer-Backup anlegt, läuft das vollständig über Apple und dessen eigene Datenschutzbedingungen — alright selbst stößt das nicht an und hat darauf keinen Einfluss.</p>
+    <h2>Warum sie so gebaut ist</h2>
+    <p>Ich möchte dir die Überlegungen hinter der App zeigen. Die meisten Apps
+      verhalten sich heute anders als diese. Sie zeigen viel Werbung oder drängen
+      aggressiv auf ein Upgrade. Ich arbeite selbst für Produkte, die genau das
+      tun &mdash; mit meiner eigenen App wollte ich es anders machen. Ich wollte
+      ein ethisches Produkt bauen, das der Gesellschaft etwas zurückgibt. alright
+      ist gebaut, um Menschen zu dienen, nicht meinem Geldbeutel. Hier zeige ich
+      dir, warum und wie.</p>
   </section>
 
   <section>
-    <h2>Dritte</h2>
-    <p>Keine. alright enthält keine Analyse- oder Werbe-SDKs und macht keine Netzwerkzugriffe. Wir geben keine Daten weiter, weil wir keine erheben.</p>
+    <h3>Ein Satz, vorher festgelegt</h3>
+    <p>Der Satz eines Tages ergibt sich aus dem Datum selbst. Er ist für alle
+      derselbe, er steht fest, bevor der Tag beginnt, und die App zweimal zu
+      öffnen bringt nie einen anderen. Damit fällt genau der Reflex weg, von dem
+      die Kategorie lebt: nach unten ziehen, noch einen holen, weitermachen, bis
+      einer passt.</p>
+    <p>Die Reihenfolge wird einmal aus einem festen Startwert gemischt. So laufen
+      die 120 Sätze 120 Tage lang ohne Wiederholung durch &mdash; rund vier
+      Monate, bis ein Satz wiederkommt.</p>
+    <div class="aside">
+      <p>Die Auswahl ist eine reine Funktion des Datums: kein Zufall zur
+        Laufzeit, kein gespeicherter Zustand, nichts zu synchronisieren. Deshalb
+        lässt sie sich auch ohne angeschlossenes Gerät testen.</p>
+    </div>
   </section>
 
   <section>
-    <h2>Speicherdauer und Löschung</h2>
-    <p>Deine Einstellungen bleiben auf deinem Gerät, bis du sie änderst oder die App löschst — dabei wird alles entfernt, was alright gespeichert hat. Es gibt kein Konto zu kündigen und keine serverseitige Kopie, deren Löschung man beantragen müsste, weil es keine gibt.</p>
+    <h3>Die Mitteilung ist das Produkt</h3>
+    <p>Die App besteht zum größten Teil aus einer Mitteilung am Tag. Also bekommt
+      deren Planung die Sorgfalt, die sonst in eine Funktionsliste ginge. iOS
+      erlaubt einer App 64 wartende Mitteilungen; alright plant alle 64 Tage im
+      Voraus. Dein Satz kommt damit auch dann, wenn du die App zwei Monate lang
+      nicht öffnest.</p>
+    <p>Geht dieser Puffer zur Neige, sagt die letzte Mitteilung das ausdrücklich,
+      statt dass die App einfach still wird. Eine App, die heimlich aufhört zu
+      funktionieren, ist schlimmer als eine, die zugibt, dass sie geöffnet
+      werden muss.</p>
   </section>
 
   <section>
-    <h2>Mitteilungs-Erlaubnis</h2>
-    <p>Du kannst Mitteilungen jederzeit an- oder ausschalten: iOS-Einstellungen → Mitteilungen → alright.</p>
+    <h3>Drei Stile, ein Satz</h3>
+    <p>Derselbe Text, dreimal gesetzt. Es gibt sie, weil der Satz der ganze
+      Bildschirm ist: Wenn sonst nichts zu sehen ist, ist Typografie die
+      komplette Oberfläche.</p>
+    <h4>Clean</h4>
+    <p>San Francisco auf Papierweiß, zentriert, Schrift fast schwarz. Der
+      Standard, gebaut, um zu verschwinden.</p>
+    <h4>Editorial</h4>
+    <p>New York &mdash; Apples eigene Serife, mit echten optischen Größen &mdash;
+      auf Elfenbein, mit steigendem Initial in Ultramarin. Die ersten zwei Zeilen
+      laufen um das Initial herum, danach steht der Absatz wieder in voller
+      Breite. Die erste Fassung dieses Stils wurde verworfen, weil sie
+      &bdquo;Clean mit Serife&ldquo; war: gleiche zentrierte Komposition, gleiche
+      Symmetrie, nur eine andere Schrift. Ein Stil braucht eine Idee, keinen
+      Schriftwechsel.</p>
+    <h4>Bold</h4>
+    <p>Archivo Black in Versalien auf einer Karte: vier Pixel Kontur, zehn Pixel
+      versetzter Schatten, acidgelber Grund. Die dunkle Fassung ist gestaltet,
+      nicht invertiert &mdash; eine schwarze Kontur und ein schwarzer Schatten
+      auf schwarzem Grund löschen genau die zwei Dinge, die den Stil ausmachen.
+      Also wird Acid zur Karte und der Schatten weiß.</p>
   </section>
 
   <section>
-    <h2>Kinder</h2>
-    <p>alright erhebt von niemandem personenbezogene Daten, auch nicht von Kindern.</p>
+    <h3>Hell und dunkel, zweimal gezeichnet</h3>
+    <p>Sechs Bildschirme, nicht drei. Jeder Stil hat eine eigene dunkle Fassung
+      statt einer invertierten Kopie, und die Unterschiede sind Entscheidungen,
+      keine Rechnung: Aus Elfenbein wird warmes Fast-Schwarz, und das Ultramarin
+      wird angehoben, damit es glüht statt zu flimmern; die Acid-Karte tauscht
+      den Platz mit dem Grund, und der harte Schatten wird weiß.</p>
+    <figure class="scheme-figure">
+      <div>
+        <p class="scheme-label">Hell</p>
+        <div class="scheme-row scheme-light">
+          <div class="device">
+      <div class="device-screen screen-clean">
+        <div class="screen-body">
+          <p class="screen-sentence">Du musst heute nicht alles machen.</p>
+          <p class="screen-date" data-today>Mittwoch, 5. August</p>
+        </div>
+      </div>
+    </div>
+          <div class="device">
+      <div class="device-screen screen-editorial">
+        <div class="screen-body">
+          <p class="screen-sentence"><span class="initial" aria-hidden="true">D</span><span class="visually-hidden">D</span>u musst heute nicht alles machen.</p>
+          <p class="screen-date" data-today>Mittwoch, 5. August</p>
+        </div>
+      </div>
+    </div>
+          <div class="device">
+      <div class="device-screen screen-bold">
+        <div class="screen-body">
+          <div class="slab"><p class="screen-sentence">Du musst heute nicht alles machen.</p></div>
+          <p class="screen-date" data-today>Mittwoch, 5. August</p>
+        </div>
+      </div>
+    </div>
+        </div>
+      </div>
+      <div style="margin-top: 1.75rem">
+        <p class="scheme-label">Dunkel</p>
+        <div class="scheme-row scheme-dark">
+          <div class="device">
+      <div class="device-screen screen-clean">
+        <div class="screen-body">
+          <p class="screen-sentence">Du musst heute nicht alles machen.</p>
+          <p class="screen-date" data-today>Mittwoch, 5. August</p>
+        </div>
+      </div>
+    </div>
+          <div class="device">
+      <div class="device-screen screen-editorial">
+        <div class="screen-body">
+          <p class="screen-sentence"><span class="initial" aria-hidden="true">D</span><span class="visually-hidden">D</span>u musst heute nicht alles machen.</p>
+          <p class="screen-date" data-today>Mittwoch, 5. August</p>
+        </div>
+      </div>
+    </div>
+          <div class="device">
+      <div class="device-screen screen-bold">
+        <div class="screen-body">
+          <div class="slab"><p class="screen-sentence">Du musst heute nicht alles machen.</p></div>
+          <p class="screen-date" data-today>Mittwoch, 5. August</p>
+        </div>
+      </div>
+    </div>
+        </div>
+      </div>
+      <figcaption>Clean, Editorial und Bold in beiden Erscheinungsbildern. Diese Seite folgt dem, was dein System eingestellt hat; in der App lässt sich stattdessen auch eines davon festlegen.</figcaption>
+    </figure>
   </section>
 
   <section>
-    <h2>Änderungen dieser Erklärung</h2>
-    <p>Bei Änderungen aktualisieren wir das Datum oben und veröffentlichen die neue Fassung an derselben Adresse.</p>
+    <h3>Schrift, die sich nach der Leserin richtet</h3>
+    <p>Jeder Stil unterstützt Dynamic Type bis in die Barrierefreiheits-Größen.
+      Der Satz ist so skaliert, dass er auch bei der größten Einstellung auf dem
+      kleinsten unterstützten Gerät noch auf einen Bildschirm passt &mdash;
+      niemand soll einen Satz scrollen müssen.</p>
+    <p>Reduce Motion wird durchgehend respektiert. Das Zahnrad zu den
+      Einstellungen ist das einzige Bedienelement auf dem Tagesbildschirm und die
+      einzige Tür zu den anderen beiden Stilen. Sein Kontrast liegt deshalb über
+      den 3:1, die die WCAG für ein Bedienelement verlangt &mdash; in jedem Stil,
+      hell wie dunkel, geprüft von Tests statt nach Augenmaß.</p>
   </section>
 
   <section>
-    <h2>Kontakt</h2>
-    <p>Lisanne Visser (Entwicklerin von alright) — <a href="mailto:alrightapp@icloud.com">alrightapp@icloud.com</a></p>
+    <h3>Nichts einzurichten, nichts zu verbinden</h3>
+    <p>Kein Account, keine Analyse, keine Werbung, keine Fremd-Frameworks und
+      keinerlei Netzwerkaufrufe. Der Katalog liegt in der App, die Einstellungen
+      im lokalen Speicher. Das ist keine nachträglich angebaute
+      Datenschutzfunktion, sondern das, was herauskommt, wenn eine App von einem
+      Server schlicht nichts braucht.</p>
+  </section>
+
+  <section>
+    <h3>Der Name</h3>
+    <p>alright wird überall kleingeschrieben, auch am Satzanfang: Der Name auf
+      dem Homescreen ist klein, das Icon ist ein kleines &bdquo;a&ldquo;, und
+      die App schreibt sich in ihren eigenen Texten selbst so. Die stilisierte
+      Wortmarke al/right ist eine grafische Form derselben Buchstaben. Sie
+      gehört auf Marken und Titel, nie in den Fließtext.</p>
   </section>
 </div>
 </div>
@@ -137,7 +288,7 @@
     </div>
     <div class="footer-bottom">
       <p>© 2026 Lisanne Visser</p>
-      <p><a href="../../privacy/">English</a></p>
+      <p><a href="../../about/">English</a></p>
     </div>
   </div>
 </footer>
